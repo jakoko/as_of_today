@@ -1,0 +1,28 @@
+<h3>Welcome to (app name pending)</h3>
+
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<h4>Account Information</h4>
+
+<h4><%= link_to "Edit Profile", edit_user_path(@user) %></h4>
+
+<p>Profile Pic:</p>
+	<%= image_tag @user.profile_pic %>
+<p>Email: <%= @user.email %></p>
+<p>Location: <%= @user.state %></p>
+<p>Website: <%= @user.personal_website %></p>
+<p>About Me: <%= @user.about_me %></p>
+
+
+
+
+
+
+<!--     
+    field :profile_pic
+
+    field :role
+    field :about_me
+    field :personal_website
+    field :email
+    field :style -->

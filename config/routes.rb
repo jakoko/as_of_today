@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  root 'pages#home', as: :home
+
+  get '/about' => 'pages#about'
+
+  # Check guide to condense this
+  get 'users' => 'users#index', as: :users
+  get 'user/new' => 'users#new', as: :new_user
+  get 'user/:id' => 'users#show', as: :user
+  post 'users' => 'users#create'
+  get "user/:id/edit" => "users#edit", as: :edit_user
+  patch "users/:id" => "users#update"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

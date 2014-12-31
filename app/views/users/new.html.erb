@@ -1,0 +1,21 @@
+<h1>Create an account</h1>
+
+<h2>
+<% if flash[:error]  %>
+	<%= flash[:error] %>
+<% end %>
+</h2>
+
+<%= form_for(@user) do |f| %>
+	<%= f.label :first_name %>
+  	<%= f.text_field :first_name %>
+  	<%= f.label :last_name %>
+  	<%= f.text_field :last_name %>
+  	<%= f.label :email %>
+  	<%= f.text_field :email %>
+	
+	<%= f.select :state, options_for_select(us_states), {:prompt => "Select State"} %>
+
+  	<%= f.submit "Create account" %>
+
+<% end %>
