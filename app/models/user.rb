@@ -1,9 +1,10 @@
+require 'carrierwave/mongoid'
+
 class User
     include Mongoid::Document
     field :first_name
     field :last_name
     field :email
-    field :profile_pic
     field :state
 
     field :role
@@ -14,5 +15,8 @@ class User
 
     has_many :portfolios
 
-    validates_presence_of :first_name, :state
+    mount_uploader :profile_pic, ProfilePicUploader
+    field :remove_profile_pic
+
+    validates_presence_of :first_name
 end

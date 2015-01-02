@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'user/:id' => 'users#show', as: :user
   post 'users' => 'users#create'
   get "user/:id/edit" => "users#edit", as: :edit_user
-  patch "users/:id" => "users#update"
+  patch "user/:id" => "users#update"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

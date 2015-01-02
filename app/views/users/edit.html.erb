@@ -2,11 +2,29 @@
 
 <%= form_for(@user) do |f| %>
 	<p>Profile Pic:</p>
+	<%= f.label :remove_profile_pic %>
+	<%= f.check_box :remove_profile_pic %>
+
 	<%= image_tag @user.profile_pic %>
+	<%= f.file_field :profile_pic %>
+
+	<p>
+		<%= f.label :last_name %>
+	  	<%= f.text_field :last_name, :value => @user.last_name %>
+  	</p>
+  	<p>
+	  	<%= f.label :email %>
+	  	<%= f.text_field :email, :value => @user.email %>
+  	</p>
+  	<p>
+	  	<%= f.label :personal_website %>
+	  	<%= f.text_field :personal_website, :value => @user.personal_website %>
+  	</p>
+  	<p>
+	  	<%= f.label :about_me %>
+	  	<%= f.text_area :about_me, :value => @user.about_me %>
+  	</p>
+
+  	<%= f.submit "Update" %>
 
 <% end %>
-  
-<p>Email: <%= @user.email %></p>
-<p>Location: <%= @user.state %></p>
-<p>Website: <%= @user.personal_website %></p>
-<p>About Me: <%= @user.about_me %></p>

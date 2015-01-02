@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	      redirect_to user_path(@user), :notice => "Account Created"
 
 	    else
-	      flash.now[:error] = "Some errors occured"
+	      flash.now[:error] = "Some errors occurred"
 	      render :new
 	    end
 	end
@@ -29,6 +29,14 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		@user = User.find(params[:id])
+
+		if @user.update_attributes(user_params)
+			redirect_to user_path(@user), :notice => "Account Updated"
+		else
+			flash.now[:error] = "Some errors occurred"
+			render :edit
+		end
 
 	end
 
@@ -39,7 +47,9 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :email, :state)
+		params.require(:user).permit(:first_name, 
+				:last_name, :email, :state, :about_me,
+			    :personal_website, :profile_pic, :remove_profile_pic)
 	end
 
 end
