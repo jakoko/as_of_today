@@ -1,5 +1,3 @@
-require 'carrierwave/mongoid'
-
 class User
     include Mongoid::Document
     field :first_name
@@ -10,7 +8,6 @@ class User
     field :role
     field :about_me
     field :personal_website
-    field :email
     field :style
 
     has_many :portfolios

@@ -6,10 +6,19 @@ Rails.application.routes.draw do
   # Check guide to condense this
   get 'users' => 'users#index', as: :users
   get 'user/new' => 'users#new', as: :new_user
-  get 'user/:id' => 'users#show', as: :user
+  get 'user/:user_id' => 'users#show', as: :user
   post 'users' => 'users#create'
-  get "user/:id/edit" => "users#edit", as: :edit_user
-  patch "user/:id" => "users#update"
+  get "user/:user_id/edit" => "users#edit", as: :edit_user
+  patch "user/:user_id" => "users#update"
+
+  # Portfolio-related routes
+  get 'portfolios' => 'portfolios#index', as: :portfolios
+  get 'user/:user_id/portfolios' => 'portfolios#show_user_portfolios', as: :user_portfolios
+  get 'user/:user_id/portfolio/new' => 'portfolios#new', as: :new_portfolio
+  post 'portfolios' => 'portfolios#create'
+  get 'user/:user_id/portfolio/:id' => 'portfolios#show', as: :portfolio
+  get 'user/:user_id/portfolio/:id/edit' => 'portfolios#edit', as: :edit_portfolio
+  patch 'portfolios' => 'portfolios#update'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

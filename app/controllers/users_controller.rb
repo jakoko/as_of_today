@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.find(params[:user_id])
 	end
 
 	def new
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = User.find(params[:user_id])
 	end
 
 	def update
-		@user = User.find(params[:id])
+		@user = User.find(params[:user_id])
 
 		if @user.update_attributes(user_params)
 			redirect_to user_path(@user), :notice => "Account Updated"
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
 
 	end
 
-
 	private
 	def user_params
 		params.require(:user).permit(:first_name, 
@@ -53,13 +52,3 @@ class UsersController < ApplicationController
 	end
 
 end
-
-	# field :first_name
- #    field :last_name
- #    field :profile_pic
-
- #    field :role
- #    field :about_me
- #    field :personal_website
- #    field :email
- #    field :style

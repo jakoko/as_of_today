@@ -16,6 +16,13 @@
 	  	<%= f.label :email %>
 	  	<%= f.text_field :email, :value => @user.email %>
   	</p>
+
+  	<p>
+  	<%= f.label :location %>
+	<%= f.select :state, options_for_select((us_states), @user.state),
+						 {:include_blank => true, :prompt => "Select State"}%>
+	</p>
+
   	<p>
 	  	<%= f.label :personal_website %>
 	  	<%= f.text_field :personal_website, :value => @user.personal_website %>

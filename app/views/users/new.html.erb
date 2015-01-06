@@ -7,15 +7,16 @@
 </h2>
 
 <%= form_for(@user) do |f| %>
-	<%= f.label :first_name %>
-  	<%= f.text_field :first_name %>
-  	<%= f.label :last_name %>
-  	<%= f.text_field :last_name %>
-  	<%= f.label :email %>
-  	<%= f.text_field :email %>
+	<%= f.label :first_name, "First Name:" %>
+	<%= f.text_field :first_name %>
 	
-	<%= f.select :state, options_for_select(us_states), {:prompt => "Select State"} %>
+  <%= f.label :last_name, "Last Name:" %>
+	<%= f.text_field :last_name %>
+	
+  <%= f.label :email, "Email:"%>
+	<%= f.text_field :email %>
 
-  	<%= f.submit "Create account" %>
+  <%= f.select :state, options_for_select(us_states), {:prompt => "Select State"} %>
 
+	<%= f.submit "Create account" %>
 <% end %>

@@ -4,6 +4,9 @@
 
 <h4>Account Information</h4>
 
+<h3><%= link_to "View My Portfolios", user_portfolios_path(@user) %></h3>
+<h3><%= link_to "Make a New Portfolio", new_portfolio_path(@user) %></h3>
+
 <h4><%= link_to "Edit Profile", edit_user_path(@user) %></h4>
 
 <p>Profile Pic:</p>
@@ -12,17 +15,3 @@
 <p>Location: <%= @user.state %></p>
 <p>Website: <%= @user.personal_website %></p>
 <p>About Me: <%= @user.about_me %></p>
-
-
-
-
-
-
-<!--     
-    field :profile_pic
-
-    field :role
-    field :about_me
-    field :personal_website
-    field :email
-    field :style -->
