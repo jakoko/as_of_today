@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'users' => 'users#create'
   get "user/:user_id/edit" => "users#edit", as: :edit_user
   patch "user/:user_id" => "users#update"
+  delete 'user/:user_id' => 'users#destroy'
 
   # Portfolio-related routes
   get 'portfolios' => 'portfolios#index', as: :portfolios
@@ -19,6 +20,11 @@ Rails.application.routes.draw do
   get 'user/:user_id/portfolio/:id' => 'portfolios#show', as: :portfolio
   get 'user/:user_id/portfolio/:id/edit' => 'portfolios#edit', as: :edit_portfolio
   patch 'portfolios' => 'portfolios#update'
+  delete 'user/:user_id/portfolio/:id' => 'portfolios#destroy'
+
+  # Photo related routes
+  get 'photos' => 'photos#index', as: :photos
+  # get  ''
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

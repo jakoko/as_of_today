@@ -1,9 +1,10 @@
 class Photo
 	include Mongoid::Document
 	field :caption
-	field :venue
-	field :date
-	field :photo_url
+
+
+	mount_uploader :photo_image, ProfilePicUploader
+	field :remove_photo_image
 
 	belongs_to :portfolio
 end

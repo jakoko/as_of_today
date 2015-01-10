@@ -4,6 +4,17 @@
 
 <h3>Portfolio Title: <%= @portfolio.title %></h3>
 
+<h4>Venue: <%= @portfolio.venue %></h4>
 
+<h4>Description</h4>
+<p><%= @portfolio.description %></p>
 
 <h4><%= link_to "Edit Portfolio Information", edit_portfolio_path(@user, @portfolio) %></h4>
+
+<% @photos.each do |photo| %>
+	<%= image_tag photo.photo_image %>
+<% end %>
+
+
+<h4><%= link_to "Delete Portfolio", portfolio_path, 
+		method: :delete, data: { confirm: "Sure?"}  %></h4>

@@ -1,35 +1,33 @@
 <h1>Create a portfolio</h1>
 
 <h3>Account for <%= @user.first_name %></h3>
-<%= @user.inspect %>
 
-<%= form_for(@portfolio) do |f| %>
+<%= form_for(@portfolio) do |f|  %>
 	<%= f.hidden_field(:user_id, value: @user.id) %>
 
 	<p>
 		<%= f.label :title, "Title:" %>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, value: @portfolio.title %>
 	</p>
 
 	<p>
 		<%= f.label :description, "Description:" %>
-		<%= f.text_area	:description %>
+		<%= f.text_area	:description, value: @portfolio.description %>
 	</p>
 
 	<p>
 		<%= f.label :venue, "Venue:" %>
-		<%= f.text_field :venue %>
+		<%= f.text_field :venue, value: @portfolio.venue %>
+	</p>
+
+	<p>
+		<%= f.fields_for :photos_attributes do |p| %>
+			<%= p.label "Upload File" %>
+			<%= p.file_field :photo_image, multiple: true %>
+		<% end %>
 	</p>
 
 	<p>	
 		<%= f.submit "Create your portfolio"%>
 	</p>
 <% end %>
-  
-
-
-<!-- 	
-	field :date
-
-	belongs_to :user
-	has_many :photos -->

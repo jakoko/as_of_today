@@ -1,21 +1,43 @@
 source 'https://rubygems.org'
 
+###################
+# Added Gems
+###################
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.7'
-
+# Using mongoid to link Rails with MongoDB
 gem 'mongoid', '~> 4.0.0'
 
-group :development do
-	gem "better_errors"
-	gem "spring"
-	gem 'quiet_assets'
-end
+# Bootstrap for styling
+gem 'bootstrap-sass', '~>3.2.0'
 
+# For password hashing
+gem 'bcrypt', '~>3.1.9'
+
+# Renaming _ids 
+gem 'mongoid-slug'
+
+# Using carrierwave for file uploads
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+
+# To process images before file upload
 gem "mini_magick"
+
+# Secure Rails configuration
+gem 'figaro'
+
+gem 'fog'
+
+# While developing app...
+group :development do
+	gem "better_errors"
+	gem 'quiet_assets'
+end
+###################
+# RAILS GEMS
+###################
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.1.7'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -36,7 +58,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-
+gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 	    else
 	      flash.now[:error] = "Some errors occurred"
 	      render :new
+
+	      # shows up in URL
+	      # whatever_path ({something: value})
 	    end
 	end
 
@@ -40,8 +43,16 @@ class UsersController < ApplicationController
 
 	end
 
+	# Portfolios and photos are destroyed as well
 	def destroy
+		user = User.find(params[:user_id])
+		user.destroy
 
+		# Delete session too. THe user becomes logged out
+		# portfolios = Portfolio.where(user_id: params[:user_id])
+		
+
+		redirect_to home_path
 	end
 
 	private

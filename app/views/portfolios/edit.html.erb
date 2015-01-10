@@ -1,4 +1,49 @@
 <h1>Edit Your Portfolio</h1>
 
 <h2>User: <%= @user.first_name %></h2>
+<%= @portfolio.title %>
 
+<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch) do |f| %>
+	<%= hidden_field_tag :user_id, @user.id %>
+	<%= hidden_field_tag :id, @portfolio.id %>
+
+	<p>
+		<%= f.label :title, "Title:" %>
+		<%= f.text_field :title, value: @portfolio.title %>
+	</p>
+
+	<p>
+		<%= f.label :description, "Description:" %>
+		<%= f.text_area	:description, value: @portfolio.description %>
+	</p>
+
+	<p>
+		<%= f.label :venue, "Venue:" %>
+		<%= f.text_field :venue, value: @portfolio.venue %>
+	</p>
+
+<div>
+
+<!-- wraps into photos_attributes -->
+<%= f.fields_for :photos_attributes do |p| %>
+	<% @photos.each_with_index do |photo, i| %>
+		<%= image_tag photo.photo_image %>
+		<%= p.label "Remove Image" %>
+	<% end %>
+<% end %>
+
+
+</div>
+
+
+	<p>
+		<%= f.fields_for :photos_attributes do |p| %>
+			<%= p.label "Add new files" %>
+			<%= p.file_field :photo_image, multiple: true %>
+		<% end %>
+	</p>
+
+	<p>	
+		<%= f.submit "Update your portfolio"%>
+	</p>
+<% end %>
