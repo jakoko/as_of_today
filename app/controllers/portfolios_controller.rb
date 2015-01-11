@@ -23,9 +23,10 @@ class PortfoliosController < ApplicationController
 
 	def create
 		@portfolio = Portfolio.new(portfolio_params)
-			logger.debug 'photo_params'
-		logger.debug photo_params
-		photo_params[:photo_image].each { |p| @portfolio.photos.new(photo_image: p) }
+
+		unless photo_params.empty? 
+			photo_params[:photo_image].each { |p| @portfolio.photos.new(photo_image: p) }
+		end
 
 		if @portfolio.save 
 			redirect_to portfolio_path(@portfolio.user_id, @portfolio)
@@ -60,6 +61,7 @@ class PortfoliosController < ApplicationController
 		user = User.find(params[:user_id])
 		portfolios = Portfolio.find(params[:id])
 		portfolios.destroy
+		
 		redirect_to user_portfolios_path(user)
 	end
 
@@ -71,19 +73,9 @@ class PortfoliosController < ApplicationController
 
 	def photo_params
 		# logger.debug("in photo_params")
-		params.require(:portfolio).require(:photos_attributes).permit(photo_image: [])
+
+		# .fetch is used since :photos_attributes may not always exist.
+		# return {} if :photos_attributes does not exist
+		params.require(:portfolio).fetch(:photos_attributes, {}).permit(photo_image: [])
 	end
 end
-
-
-
-		# logger.debug 'photo_params'
-		# logger.debug photo_params
-		# logger.debug portfolio_params[:photos_attributes]
-		# @dude = portfolio_params
-
-		# logger.debug "in create"
-		# logger.debug @dude
-		# logger.debug @dude.photos_attributes
-		# logger.debug("before array")
-		# logger.debug photo_params[:photo_image].class
