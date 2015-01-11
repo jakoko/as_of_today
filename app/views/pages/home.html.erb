@@ -1,3 +1,5 @@
 <h1>PROJECT 2 <br/> (title pending)</h1>
 
-<%= link_to "Create Account", { :controller => :users, :action => :new }%>
+<% @photos.each do |photo| %>
+	<div><%= image_tag photo.photo_image %></div>
+<% end %>

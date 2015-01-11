@@ -42,13 +42,23 @@ class PortfoliosController < ApplicationController
 	end
 
 	def update
-		# @user = User.find(params[:user_id])
-		# logger.debug "in create"
-		# logger.debug "params of photos_attributes"
-		# logger.debug params[:portfolio][:photos_attributes]
-		# logger.debug 'photo_params'
-		# logger.debug photo_params
 		@portfolio = Portfolio.find(params[:id])
+
+		# Upload image
+		unless photo_params[:photo_image].nil? 
+			photo_params[:photo_image].each { |p| 
+				@portfolio.photos.new(photo_image: p) 
+				logger.debug "here"
+			}
+		end
+
+		# Remove images
+		unless photo_params[:current_photo].nil?
+			photo_params[:current_photo].each { |key, value|
+				logger.debug Photo.find(value[:photo_id]).delete if value[:remove_photo_image] == "1"
+			}
+		end
+
 
 		if @portfolio.update_attributes(portfolio_params)
 			redirect_to portfolio_path(@portfolio.user_id, @portfolio)
@@ -67,15 +77,34 @@ class PortfoliosController < ApplicationController
 
 	private
 	def portfolio_params
-		# logger.debug("in port_params")
 		params.require(:portfolio).permit(:title, :user_id, :venue, :description, :date)
 	end
 
 	def photo_params
-		# logger.debug("in photo_params")
-
 		# .fetch is used since :photos_attributes may not always exist.
 		# return {} if :photos_attributes does not exist
-		params.require(:portfolio).fetch(:photos_attributes, {}).permit(photo_image: [])
+		params.require(:portfolio).fetch(:photos_attributes, {}).permit(current_photo: [:remove_photo_image, :photo_id], photo_image: [])
 	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

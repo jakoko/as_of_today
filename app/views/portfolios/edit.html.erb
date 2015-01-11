@@ -7,6 +7,9 @@
 	<%= hidden_field_tag :user_id, @user.id %>
 	<%= hidden_field_tag :id, @portfolio.id %>
 
+	<p>	
+		<%= f.submit "Update your portfolio"%>
+	</p>
 	<p>
 		<%= f.label :title, "Title:" %>
 		<%= f.text_field :title, value: @portfolio.title %>
@@ -24,18 +27,16 @@
 
 <div>
 
-<!-- wraps into photos_attributes -->
-<%= f.fields_for :photos_attributes do |p| %>
-	<% @photos.each_with_index do |photo, i| %>
-		<%= image_tag photo.photo_image %>
-		<%= p.label "Remove Image" %>
+	<%= f.fields_for :photos_attributes do |p| %>
+		<% @photos.each_with_index do |photo, i| %>
+			<%= image_tag photo.photo_image %>
+			<%= p.label "Remove Image" %>
+			<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
+			<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo.id %>
+		<% end %>
 	<% end %>
-<% end %>
-
 
 </div>
-
-
 	<p>
 		<%= f.fields_for :photos_attributes do |p| %>
 			<%= p.label "Add new files" %>
@@ -43,7 +44,20 @@
 		<% end %>
 	</p>
 
-	<p>	
-		<%= f.submit "Update your portfolio"%>
-	</p>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
