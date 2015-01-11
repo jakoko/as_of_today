@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   get '/about' => 'pages#about'
 
+  # Logging in and out a user
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
   # Check guide to condense this
   get 'users' => 'users#index', as: :users
   get 'user/new' => 'users#new', as: :new_user

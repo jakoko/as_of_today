@@ -43,11 +43,11 @@ class PortfoliosController < ApplicationController
 
 	def update
 		# @user = User.find(params[:user_id])
-		logger.debug "in create"
-		logger.debug "params of photos_attributes"
-		logger.debug params[:portfolio][:photos_attributes]
-		logger.debug 'photo_params'
-		logger.debug photo_params
+		# logger.debug "in create"
+		# logger.debug "params of photos_attributes"
+		# logger.debug params[:portfolio][:photos_attributes]
+		# logger.debug 'photo_params'
+		# logger.debug photo_params
 		@portfolio = Portfolio.find(params[:id])
 
 		if @portfolio.update_attributes(portfolio_params)

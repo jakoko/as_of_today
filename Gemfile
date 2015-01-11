@@ -23,12 +23,13 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 # To process images before file upload
 gem "mini_magick"
 
-# Secure Rails configuration
+# Secure Rails configuration (to git)
 gem 'figaro'
 
+# AW3 service
 gem 'fog'
 
-# While developing app...
+# Development purposes
 group :development do
 	gem "better_errors"
 	gem 'quiet_assets'
@@ -59,8 +60,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'

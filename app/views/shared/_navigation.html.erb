@@ -1,4 +1,14 @@
 <nav>
 	<%= link_to	"Home", home_path %>
 	<%= link_to "All Users(temp)", users_path %>
+	<%= link_to "Log In", login_path %>
+	<%= link_to "Create Account", new_user_path  %>
+	<%= link_to "Log Out", logout_path, method: :delete %>
+
+	<% if logged_in? %>
+  		Logged in as: <%= current_user.first_name %> <%= link_to 'Log Out', logout_path, method: :delete %>
+	<% else %>
+  		<%= link_to 'Log In', login_path %>
+	<% end %>
+
 </nav>

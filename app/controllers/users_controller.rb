@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
 		if @user.save
 	      redirect_to user_path(@user), :notice => "Account Created"
-
 	    else
 	      flash.now[:error] = "Some errors occurred"
 	      render :new
@@ -59,7 +58,8 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:first_name, 
 				:last_name, :email, :state, :about_me,
-			    :personal_website, :profile_pic, :remove_profile_pic)
+			    :personal_website, :profile_pic, :remove_profile_pic,
+			    :password)
 	end
 
 end

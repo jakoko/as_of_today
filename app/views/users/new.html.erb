@@ -17,6 +17,15 @@
 	<%= f.text_field :email %>
 
   <%= f.select :state, options_for_select(us_states), {:prompt => "Select State"} %>
+  <div>
+  	<%= f.label :password %>
+  	<%= f.password_field :password %>
+  </div>
+
+  <div>
+  	<h3><%= f.label "Enter password again" %></h3>
+  	<%= f.password_field :something %>
+  </div>
 
 	<%= f.submit "Create account" %>
 <% end %>
