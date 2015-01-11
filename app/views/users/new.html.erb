@@ -23,8 +23,8 @@
   </div>
 
   <div>
-  	<h3><%= f.label "Enter password again" %></h3>
-  	<%= f.password_field :something %>
+  	<h3><%= f.label :password_confirmation %></h3>
+  	<%= f.password_field :password_confirmation %>
   </div>
 
 	<%= f.submit "Create account" %>
