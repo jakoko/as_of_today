@@ -3,11 +3,12 @@ source 'https://rubygems.org'
 ###################
 # Added Gems
 ###################
+ruby '2.1.3'
 
 # Using mongoid to link Rails with MongoDB
 gem 'mongoid', '~> 4.0.0'
 
-# Bootstrap for styling
+# Bootstrap gem
 gem 'bootstrap-sass', '~>3.2.0'
 
 # For password hashing
@@ -28,6 +29,9 @@ gem 'figaro'
 
 # Amazon S3 service
 gem 'fog'
+
+# Heroku to use assets
+gem 'rails_12factor', group: :production
 
 # Development purposes
 group :development do
@@ -69,4 +73,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
