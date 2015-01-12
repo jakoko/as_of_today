@@ -10,4 +10,8 @@ module SessionsHelper
 	def delete_current_user
 		@current_user = nil
 	end
+
+	def me?
+		session[:user_id] == @user.id.to_s
+	end
 end

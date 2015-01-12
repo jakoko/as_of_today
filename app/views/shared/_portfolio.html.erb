@@ -1,0 +1,5 @@
+<h4><%= link_to "Edit Portfolio Information", edit_portfolio_path(@user, @portfolio) %></h4>
+
+
+<h4><%= link_to "Delete Portfolio", portfolio_path, 
+		method: :delete, data: { confirm: "Sure?"}  %></h4>

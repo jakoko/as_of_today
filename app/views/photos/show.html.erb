@@ -1,0 +1,12 @@
+<h1>Show Photo Page</h1>
+
+<h2>Photographer: <%= @user.first_name %> <%= @user.last_name %></h2>
+<p><%= link_to "View Profile", user_path(@user)  %></p>
+
+
+<h2>Portfolio Title: <%= @portfolio.title %> </h2>
+<p><%= link_to "View Portfolio", portfolio_path(@user, @portfolio)  %></p>
+<p>Venue: <%= @portfolio.venue %></p>
+<p><%= @portfolio.description %></p>
+
+<%= image_tag @photo.photo_image %>

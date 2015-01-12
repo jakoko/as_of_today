@@ -7,5 +7,4 @@
 	<p><%= link_to portfolio.title, portfolio_path(@user, portfolio) %></p>
 <% end %>
 
-
-<%= link_to "Create a new portfolio", new_portfolio_path %>
+<%= render 'shared/all_portfolios' if me? %>

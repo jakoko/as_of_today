@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   # Photo related routes
   get 'photos' => 'photos#index', as: :photos
+  get 'photo/:photo_id' => 'photos#show', as: :photo
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

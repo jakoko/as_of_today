@@ -2,5 +2,5 @@
 <h3>Wedding Photographers Hub</h3>
 
 <% @photos.each do |photo| %>
-	<div><%= image_tag photo.photo_image.url(:normal) %></div>
+	<div><%= link_to image_tag(photo.photo_image.url(:normal)), photo_path(photo.id)  %></div>
 <% end %>

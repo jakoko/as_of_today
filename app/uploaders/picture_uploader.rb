@@ -40,14 +40,15 @@ class PictureUploader < CarrierWave::Uploader::Base
 
 
   # Creates 3 versions for Photo model
-  version :large, if: :is_Photo_model? do
-    process resize_to_fit: [900, 1200]
-  end
+  # Large size
+  process resize_to_fit: [900, 1200], if: :is_Photo_model?
 
-  version :normal, if: :is_Photo_model?, from_version: :large do 
+  # Normal size
+  version :normal, if: :is_Photo_model? do 
     process resize_to_fit: [400, 400]
   end
 
+  # Thumb size
   version :thumb, if: :is_Photo_model?, from_verion: :normal do
     process resize_to_fit: [125, 125]
   end
@@ -64,7 +65,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   #####################
   #####################
 
-
   # def scale(width, height)
   #   # do something
   # end
@@ -73,12 +73,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   #     process :resize_to_fit => [1024, 768]
   # end
 
-
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
-
-
 end

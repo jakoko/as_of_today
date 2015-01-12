@@ -29,7 +29,7 @@
 
 	<%= f.fields_for :photos_attributes do |p| %>
 		<% @photos.each_with_index do |photo, i| %>
-			<%= image_tag photo.photo_image.url(:medium) %>
+			<%= image_tag photo.photo_image.url(:normal) %>
 			<%= p.label "Remove Image" %>
 			<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
 			<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo.id %>

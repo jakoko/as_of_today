@@ -1,6 +1,7 @@
 <h1>For a single portfolio and its photos</h1>
 
 <h2>User: <%= @user.first_name %></h2>
+<p><%= link_to "Profile", user_path(@user)  %></p>
 
 <h3>Portfolio Title: <%= @portfolio.title %></h3>
 
@@ -9,12 +10,8 @@
 <h4>Description</h4>
 <p><%= @portfolio.description %></p>
 
-<h4><%= link_to "Edit Portfolio Information", edit_portfolio_path(@user, @portfolio) %></h4>
+<%= render 'shared/portfolio' if me? %>
 
 <% @photos.each do |photo| %>
 	<%= image_tag photo.photo_image.url(:normal) %>
 <% end %>
-
-
-<h4><%= link_to "Delete Portfolio", portfolio_path, 
-		method: :delete, data: { confirm: "Sure?"}  %></h4>

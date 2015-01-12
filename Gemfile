@@ -33,6 +33,8 @@ gem 'fog'
 # Heroku to use assets
 gem 'rails_12factor', group: :production
 
+# gem 'thin', group: :production
+
 # Development purposes
 group :development do
 	gem "better_errors"

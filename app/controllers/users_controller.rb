@@ -51,7 +51,10 @@ class UsersController < ApplicationController
 	# Portfolios and photos are destroyed as well
 	def destroy
 		user = User.find(params[:user_id])
+
 		session.delete(:user_id)
+		delete_current_user()
+		
 		user.destroy
 		redirect_to home_path
 	end

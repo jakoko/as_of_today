@@ -1,13 +1,10 @@
-<h3>Welcome to (app name pending)</h3>
-
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
 <h4>Account Information</h4>
 
-<h3><%= link_to "View My Portfolios", user_portfolios_path(@user) %></h3>
-<h3><%= link_to "Make a New Portfolio", new_portfolio_path(@user) %></h3>
+<%= render 'shared/profile' if me? %>
 
-<h4><%= link_to "Edit Profile", edit_user_path(@user) %></h4>
+<h3><%= link_to "View My Portfolios", user_portfolios_path(@user) %></h3>
 
 <p>Profile Pic:</p>
 	<%= image_tag @user.profile_pic %>
@@ -15,6 +12,3 @@
 <p>Location: <%= @user.state %></p>
 <p>Website: <%= @user.personal_website %></p>
 <p>About Me: <%= @user.about_me %></p>
-
-<h4><%= link_to "Delete Account", @user, method: :delete,
-				data: {confirm: "Sure?"} %></h4>

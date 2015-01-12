@@ -64,7 +64,7 @@ class PortfoliosController < ApplicationController
 			}
 		end
 
-
+		# Update
 		if @portfolio.update_attributes(portfolio_params)
 			redirect_to portfolio_path(@portfolio.user_id, @portfolio)
 		else
