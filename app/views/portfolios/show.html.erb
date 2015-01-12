@@ -12,7 +12,7 @@
 <h4><%= link_to "Edit Portfolio Information", edit_portfolio_path(@user, @portfolio) %></h4>
 
 <% @photos.each do |photo| %>
-	<%= image_tag photo.photo_image %>
+	<%= image_tag photo.photo_image.url(:normal) %>
 <% end %>
 
 

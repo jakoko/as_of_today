@@ -9,7 +9,7 @@ class PortfoliosController < ApplicationController
 			@portfolios = Portfolio.where(user_id: params[:user_id])
 			@user = User.find(params[:user_id])
 		# else
-			redirect_to home_path
+			# redirect_to home_path
 			# send error
 		# end
 	end
