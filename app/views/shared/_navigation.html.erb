@@ -4,7 +4,9 @@
 
 
 	<% if logged_in? %>
-  		Logged in as: <%= current_user.first_name %> <%= link_to 'Log Out', logout_path, method: :delete %>		
+  		Logged in as: <%= current_user.first_name %> 
+  		<%= link_to "Profile", user_path(current_user)  %>	
+  		<%= link_to 'Log Out', logout_path, method: :delete %>	
 	<% else %>
   		<%= link_to 'Log In', login_path %>
   		<%= link_to "Create Account", new_user_path  %>  

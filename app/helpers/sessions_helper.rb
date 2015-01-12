@@ -6,4 +6,8 @@ module SessionsHelper
 	def logged_in?
 		session[:user_id] != nil
 	end
+
+	def delete_current_user
+		@current_user = nil
+	end
 end

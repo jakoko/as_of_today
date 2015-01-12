@@ -5,8 +5,13 @@ class PortfoliosController < ApplicationController
 
 	# Eventually, show thumbnail cover of each portfolio
 	def show_user_portfolios
-		@portfolios = Portfolio.where(user_id: params[:user_id])
-		@user = User.find(params[:user_id])
+		# if logged_in? && params[:user_id] == session[:user_id]
+			@portfolios = Portfolio.where(user_id: params[:user_id])
+			@user = User.find(params[:user_id])
+		# else
+			redirect_to home_path
+			# send error
+		# end
 	end
 
 	# Show individual pictures of within a single(chosen) portfolio
@@ -85,26 +90,23 @@ class PortfoliosController < ApplicationController
 		# return {} if :photos_attributes does not exist
 		params.require(:portfolio).fetch(:photos_attributes, {}).permit(current_photo: [:remove_photo_image, :photo_id], photo_image: [])
 	end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
