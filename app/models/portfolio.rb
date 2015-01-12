@@ -13,15 +13,6 @@ class Portfolio
 	
 	has_many :photos, dependent: :destroy
 	accepts_nested_attributes_for :photos
-	# , allow_destroy: true,
-	#  reject_if: proc { |attributes| attributes[:photos_attributes].blank? } 
-								 # allow_destroy: true
-
-		# Same thing
-		  # def photos_attributes=(attributes)
-		  #   # Process the attributes hash
-		  # end
-
 
 	validates_presence_of :title
 end

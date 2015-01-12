@@ -3,7 +3,7 @@ class Photo
 	field :caption
 
 
-	mount_uploader :photo_image, ProfilePicUploader
+	mount_uploader :photo_image, PictureUploader
 	field :remove_photo_image
 
 	belongs_to :portfolio

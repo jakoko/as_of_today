@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root 'pages#home', as: :home
 
   get '/about' => 'pages#about'
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
 
   # Photo related routes
   get 'photos' => 'photos#index', as: :photos
-  # get  ''
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

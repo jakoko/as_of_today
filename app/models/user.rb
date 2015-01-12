@@ -26,7 +26,7 @@ class User
     accepts_nested_attributes_for :portfolios
 
     # Use Carrierwave to upload a profile picture
-    mount_uploader :profile_pic, ProfilePicUploader
+    mount_uploader :profile_pic, PictureUploader
     field :remove_profile_pic
 
     # Encrypted user's password

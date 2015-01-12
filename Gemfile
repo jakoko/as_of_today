@@ -26,7 +26,7 @@ gem "mini_magick"
 # Secure Rails configuration (to git)
 gem 'figaro'
 
-# AW3 service
+# Amazon S3 service
 gem 'fog'
 
 # Development purposes
