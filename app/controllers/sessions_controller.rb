@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session.delete(:user_id)
+		delete_current_user()
 		redirect_to home_path
 	end
 
