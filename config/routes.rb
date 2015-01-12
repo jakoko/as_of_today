@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   
   root 'pages#home', as: :home
 
-  get '/about' => 'pages#about'
-
   # Logging in and out a user
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -29,7 +27,7 @@ Rails.application.routes.draw do
   delete 'user/:user_id/portfolio/:id' => 'portfolios#destroy'
 
   # Photo related routes
-  get 'photos' => 'photos#index', as: :photos
+  # get 'photos' => 'photos#index', as: :photos
   get 'photo/:photo_id' => 'photos#show', as: :photo
 
   # The priority is based upon order of creation: first created -> highest priority.

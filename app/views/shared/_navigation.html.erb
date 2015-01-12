@@ -1,7 +1,5 @@
 <nav>
 	<%= link_to	"Home", home_path %>
-	<%= link_to "All Users(temp)", users_path %>
-
 
 	<% if logged_in? %>
   		Logged in as: <%= current_user.first_name %> 

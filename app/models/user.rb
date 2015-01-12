@@ -10,16 +10,15 @@ class User
     field :email
     field :state
 
-    field :role
     field :about_me
     field :personal_website
     field :style
 
-    # 
+    # Validations
     validates :first_name, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }, 
               format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-    validates :password, length: { in: 6..20 }, confirmation: true, on: :create
+    validates :password, on: :create, length: { in: 6..20 }, confirmation: true
 
     # Setting relational link with Portfolio model
     has_many :portfolios, dependent: :destroy

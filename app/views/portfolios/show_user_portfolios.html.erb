@@ -2,6 +2,8 @@
 
 <h2><%= @user.first_name %> <%= @user.last_name %></h2>
 
+<p><%= link_to "Back to Profile", user_path(@user)  %></p>
+
 <h3>Portfolios</h3>
 	<% @portfolios.each do |portfolio| %>
 	<p><%= link_to portfolio.title, portfolio_path(@user, portfolio) %></p>

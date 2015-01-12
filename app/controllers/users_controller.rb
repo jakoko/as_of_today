@@ -22,9 +22,6 @@ class UsersController < ApplicationController
 	    	else
 	      		flash.now[:error] = "Some errors occurred"
 	      		render :new
-
-	      		# shows up in URL - kevin's thing
-	      		# whatever_path ({something: value})
 	    	end
 	    else
 	    	# enter password again
