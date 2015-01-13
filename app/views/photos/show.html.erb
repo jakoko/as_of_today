@@ -1,12 +1,21 @@
-<h1>Show Photo Page</h1>
+<div class="row" id="show-photo-background">
+	<div class="col-md-10 col-md-offset-1">
+		<%= image_tag @photo.photo_image, class: "img-thumbnail center-block" %>
+	</div>
+</div>
 
-<h2>Photographer: <%= @user.first_name %> <%= @user.last_name %></h2>
-<p><%= link_to "View Profile", user_path(@user)  %></p>
 
+<div class="row">
+	<div class="col-md-3 col-md-offset-1">
+		<h2>Photographer: <%= @user.first_name %> <%= @user.last_name %></h2>
+		<p><%= link_to "View Profile", user_path(@user) %></p>
 
-<h2>Portfolio Title: <%= @portfolio.title %> </h2>
-<p><%= link_to "View Portfolio", portfolio_path(@user, @portfolio)  %></p>
-<p>Venue: <%= @portfolio.venue %></p>
-<p><%= @portfolio.description %></p>
+		<h2>Portfolio Title: <%= @portfolio.title %> </h2>
+		<%= link_to "View Portfolio", portfolio_path(@user, @portfolio) %>
+	</div>
 
-<%= image_tag @photo.photo_image %>
+	<div class="col-md-7">
+		<p>Venue: <%= @portfolio.venue %></p>
+		<p><%= @portfolio.description %></p>
+	</div>
+</div>

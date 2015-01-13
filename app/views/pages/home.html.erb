@@ -1,6 +1,21 @@
-<h1>As of Today</h1>
-<h3>Wedding Photographers Hub</h3>
+<div class='page-header'>
+	<h1 id='home-h1'>As of Today</h1>
+</div>
 
-<% @photos.each do |photo| %>
-	<div><%= link_to image_tag(photo.photo_image.url(:normal)), photo_path(photo.id)  %></div>
+<% @photos.in_groups_of(4) do |photo1, photo2, photo3, photo4| %>
+	<div class="row">
+	    <div class="col-md-3"><%= link_to image_tag(photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo1.id) %></div>
+
+	    <% if photo2 %> <%# To take care of odd groups %>
+	      <div class="col-md-3"><%= link_to image_tag(photo2.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo2.id) %></div>
+	    <% end %>
+
+	    <% if photo3 %> <%# To take care of odd groups %>
+	      <div class="col-md-3"><%= link_to image_tag(photo3.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo3.id) %></div>
+	    <% end %>
+
+   	    <% if photo4 %> <%# To take care of odd groups %>
+	      <div class="col-md-3"><%= link_to image_tag(photo4.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo4.id) %></div>
+	    <% end %>
+	</div>
 <% end %>

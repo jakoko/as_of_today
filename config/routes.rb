@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  # Using Page Controller to view
   root 'pages#home', as: :home
 
   # Logging in and out a user
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  # Check guide to condense this
+  # User-related routes
   get 'users' => 'users#index', as: :users
   get 'user/new' => 'users#new', as: :new_user
   get 'user/:user_id' => 'users#show', as: :user

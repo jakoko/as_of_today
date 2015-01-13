@@ -16,4 +16,20 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'font';
 
+#home-h1 {
+	font-family: 'Sail-Regular';
+	font-size: 50px;
+	text-align: center;
+	background-image: url();
+}
+
+#show-photo-background {
+	background-color: rgba(0,0,0,.8);
+}
+
+// h2 {
+// 	font-family: 'Tangerine_Bold';
+// 	font-size: 50px;
+// }
