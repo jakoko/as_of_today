@@ -60,7 +60,7 @@ class PortfoliosController < ApplicationController
 		# Remove images
 		unless photo_params[:current_photo].nil?
 			photo_params[:current_photo].each { |key, value|
-				logger.debug Photo.find(value[:photo_id]).delete if value[:remove_photo_image] == "1"
+				Photo.find(value[:photo_id]).delete if value[:remove_photo_image] == "1"
 			}
 		end
 
