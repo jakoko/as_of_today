@@ -1,17 +1,14 @@
 <nav class="navbar navbar-default">
 	<%= link_to	"As of Today", home_path, class: "btn btn-link", id: "home-button" %>
 
-	<% if logged_in?() %>
+	<% if logged_in? %>
 
-  		<%= link_to "My Portfolios", user_portfolios_path(current_user), class: "btn btn-link" %>
+ 			<%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-primary nav-button-right' %>
+ 		
+      <%= link_to "My Portfolios", user_portfolios_path(current_user), class: "btn btn-link pull-right nav-button-right" %>
 
-  		<%= link_to "New Portfolio", new_portfolio_path(current_user), class: "btn btn-link" %>
+      <%= link_to "Profile", user_path(current_user), class: "btn btn-link pull-right nav-button-right" %>
 
-  		<%= link_to "Profile", user_path(current_user), class: "btn btn-link" %>
-
-  		<span class= "nav-button-right">
- 			<%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-primary' %>
- 		</span>
  	<% else %>
 		<span class= "nav-button-right">
   			<%= link_to 'Log In', login_path, class: 'btn btn-info' %>

@@ -1,11 +1,13 @@
+<%= render 'shared/user_account_navigation' if logged_in? %>
+
 <div class="row">
-	<div class="col-md-8 col-md-offset-1">
+	<div class="col-md-10 col-md-offset-1">
 		<h2>
-			<%= @user.first_name %> <%= @user.last_name %>
-			<small><%= link_to "Back to Profile", user_path(@user) %></small>
+			<u><%= @user.first_name %> <%= @user.last_name %></u>
+			<small class="h4"><%= link_to "Profile", user_path(@user) %></small>
 		</h2>
 
-		
+		<br>
 
 		<h3>Portfolios</h3>
 		<% @portfolios.in_groups_of(4) do |port1, port2, port3, port4| %>
@@ -13,7 +15,7 @@
 
 				<% if port1 %>
 			    <div class="col-md-3 text-center">
-			    	<%= link_to port1.title, portfolio_path(@user, port1) %>
+			    	<h4><%= link_to port1.title, portfolio_path(@user, port1) %><h4>
 			    	<% if !port1.photos.empty? %>
 			    	<%= image_tag(port1.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
 			    	<% end %>
@@ -23,7 +25,7 @@
 			    <!-- Portfolio2 -->
 		    	<% if port2 %> 
 		      	<div class="col-md-3 text-center">
-		    		<%= link_to port2.title, portfolio_path(@user, port2) %>
+		    		<h4><%= link_to port2.title, portfolio_path(@user, port2) %></h4>
 		    		<% if !port2.photos.empty? %>
 		    		<%= image_tag(port2.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
 		    		<% end %>
@@ -33,7 +35,7 @@
 		      	<!-- Portfolio3 -->
 		      	<% if port3 %> 
 		      	<div class="col-md-3 text-center">
-		    		<%= link_to port3.title, portfolio_path(@user, port3) %>
+		    		<h4><%= link_to port3.title, portfolio_path(@user, port3) %></h4>
 		    		<% if !port3.photos.empty? %>
 		    		<%= image_tag(port3.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
 		    		<% end %>      
@@ -43,7 +45,7 @@
 		      	<!-- Portfolio4 -->
 		      	<% if port4 %> 
 		      	<div class="col-md-3 text-center">
-		    		<%= link_to port4.title, portfolio_path(@user, port4) %>
+		    		<h4><%= link_to port4.title, portfolio_path(@user, port4) %></h4>
 		    		<% if !port4.photos.empty? %>
 		    		<%= image_tag(port4.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
 		    		<% end %>      

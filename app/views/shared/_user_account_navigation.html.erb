@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+
+		<ul class="nav nav-tabs">
+			<li><%= link_to "My Portfolios", user_portfolios_path(current_user) %></li>
+
+			<li><%= link_to "Make a New Portfolio", new_portfolio_path(current_user) %></li>
+
+			<li><%= link_to "My Profile", user_path(current_user) %></li>
+
+			<li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+		</ul>
+	</div>
+</div>

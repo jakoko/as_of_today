@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:user_id])
+		# Prevent hitting database if user is visiting own page
+		me? ? @user = current_user : @user = User.find(params[:user_id])
 	end
 
 	def new
@@ -32,11 +33,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:user_id])
+		@user = current_user
 	end
 
 	def update
-		@user = User.find(params[:user_id])
+		@user = current_user
 
 		if @user.update_attributes(user_params)
 			redirect_to user_path(@user), :notice => "Account Updated"
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 
 	# Portfolios and photos are destroyed as well
 	def destroy
-		user = User.find(params[:user_id])
+		user = current_user
 
 		session.delete(:user_id)
 		delete_current_user()

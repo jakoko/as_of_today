@@ -20,6 +20,6 @@ module SessionsHelper
 	# Check if user is accessing own pages
 	# Mainly used for rendering partials on certain pages
 	def me?
-		session[:user_id] == @user.id.to_s
+		session[:user_id] == params[:user_id]
 	end
 end

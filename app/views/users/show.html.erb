@@ -1,8 +1,11 @@
+<%= render "shared/user_account_navigation" if logged_in? %>
+
 <div class="row">
-	<div class="col-md-8 col-md-offset-1">
+	<div class="col-md-8 col-md-offset-2">
 
 		<div class="col-md-8">
-			<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+			<h2><u><%= @user.first_name %> <%= @user.last_name %></u></h2>
+			<h4><%= link_to "View Portfolios", user_portfolios_path(@user) %></h4>
 			<p>Email: <%= @user.email %></p>
 			<p>Location: <%= @user.state %></p>
 			<p>Website: <%= @user.personal_website %></p>
@@ -15,15 +18,6 @@
 			<% end %>
 		</div>
 	</div>
-
-	<div class="col-md-2">
-			<%= render 'shared/profile' if me? %>
-	</div>
-
 </div>
 
-<div class="row">
-	<div class="col-md-8 col-md-offset-1">
-		<h3><%= link_to "View All My Portfolios", user_portfolios_path(@user) %></h3>
-	</div>
-</div>
+<%= render "shared/delete_account" if me? %>

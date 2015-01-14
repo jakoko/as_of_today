@@ -14,9 +14,6 @@ gem 'bootstrap-sass', '~>3.2.0'
 # For password hashing
 gem 'bcrypt', '~>3.1.9'
 
-# Renaming _ids 
-gem 'mongoid-slug'
-
 # Using carrierwave for file uploads
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

@@ -156,9 +156,6 @@ GEM
     mongoid-grid_fs (2.1.0)
       mime-types (>= 1.0, < 3.0)
       mongoid (>= 3.0, < 5.0)
-    mongoid-slug (4.0.0)
-      mongoid (>= 3.0)
-      stringex (~> 2.0)
     moped (2.0.2)
       bson (~> 2.2)
       connection_pool (~> 2.0)
@@ -218,7 +215,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    stringex (2.5.2)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -250,7 +246,6 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mongoid (~> 4.0.0)
-  mongoid-slug
   quiet_assets
   rails (= 4.1.7)
   rails_12factor

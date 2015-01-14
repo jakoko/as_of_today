@@ -1,43 +1,76 @@
-<h4>Account Information</h4>
+<%= render 'shared/user_account_navigation' if logged_in? %>
 
-<%= form_for(@user) do |f| %>
-	<p>Profile Pic:</p>
-	<%= f.label :remove_profile_pic %>
-	<%= f.check_box :remove_profile_pic %>
 
-	<%= image_tag @user.profile_pic %>
-	
-	<%= f.file_field :profile_pic %>
+<div class="col-md-6 col-md-offset-3">
+	<h1 class="text-center">Edit Profile</h1>
 
-	<p>
-		<%= f.label :first_name %>
-	  	<%= f.text_field :first_name, :value => @user.first_name %>
-  	</p>
+	<%= form_for(@user, html: {role: "form"}) do |f| %>
+		<h4 class="text-center">Profile Pic:</h4>
 
-	<p>
-		<%= f.label :last_name %>
-	  	<%= f.text_field :last_name, :value => @user.last_name %>
-  	</p>
-  	<p>
-	  	<%= f.label :email %>
-	  	<%= f.text_field :email, :value => @user.email %>
-  	</p>
+		<%= image_tag @user.profile_pic, class: "img-thumbnail img-responsive center-block" %>
 
-  	<p>
-  	<%= f.label :location %>
-	<%= f.select :state, options_for_select((us_states), @user.state),
-						 {:include_blank => true, :prompt => "Select State"}%>
-	</p>
+		<h5 class="text-center">
+			<%= f.label "Remove current picture" %>
+			<%= f.check_box :remove_profile_pic %>
+		</h5>
 
-  	<p>
-	  	<%= f.label :personal_website %>
-	  	<%= f.text_field :personal_website, :value => @user.personal_website %>
-  	</p>
-  	<p>
-	  	<%= f.label :about_me %>
-	  	<%= f.text_area :about_me, :value => @user.about_me %>
-  	</p>
+		<div class="text-center">
+			<%= f.label "Upload a new picture" %>
+			<%= f.file_field :profile_pic, class:"center-block" %>
+		</div>
 
-  	<%= f.submit "Update" %>
+		<br>
 
-<% end %>
+		<div class="form-group">
+			<%= f.label :first_name %>
+		  	<%= f.text_field :first_name, :value => @user.first_name, class: "form-control" %>
+	  	</div>
+
+		<div class="form-group">
+			<%= f.label :last_name %>
+		  	<%= f.text_field :last_name, :value => @user.last_name, class: "form-control" %>
+	  	</div>
+	  	<div class="form-group">
+		  	<%= f.label :email %>
+		  	<%= f.text_field :email, :value => @user.email, class: "form-control" %>
+	  	</div>
+
+	  	<div class="form-group">
+	  	<%= f.label :location %>
+		<%= f.select :state, options_for_select((us_states), @user.state),
+							 {:include_blank => true, :prompt => "Select State"}%>
+		</div>
+
+	  	<div class="form-group">
+		  	<%= f.label :personal_website %>
+		  	<%= f.text_field :personal_website, :value => @user.personal_website, class: "form-control" %>
+	  	</div>
+	  	<div class="form-group">
+		  	<%= f.label :about_me %>
+		  	<%= f.text_area :about_me, :value => @user.about_me, class: "form-control" %>
+	  	</div>
+
+	  	<%= f.submit "Update", class: "btn btn-success center-block" %>
+
+	<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

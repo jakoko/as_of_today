@@ -8,24 +8,21 @@ class PortfoliosController < ApplicationController
 
 	# Show all of user's portfolios
 	def show_user_portfolios
-		# if logged_in? && params[:user_id] == session[:user_id]
+			me? ? @user = current_user : @user = User.find(params[:user_id])
+
 			@portfolios = Portfolio.where(user_id: params[:user_id])
-			@user = User.find(params[:user_id])
-		# else
-			# redirect_to home_path
-			# send error
-		# end
 	end
 
 	# Show contents of an individual portfolio
 	def show
-		@user = User.find(params[:user_id])
+		me? ? @user = current_user : @user = User.find(params[:user_id])
+
 		@portfolio = Portfolio.find(params[:id])
 		@photos = Photo.where(portfolio_id: params[:id])
 	end
 
 	def new
-		@user = User.find(params[:user_id])
+		@user = current_user
 		@portfolio = Portfolio.new()
 	end
 
@@ -44,7 +41,8 @@ class PortfoliosController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:user_id])
+		me? ? @user = current_user : @user = User.find(params[:user_id])
+
 		@portfolio = Portfolio.find(params[:id])
 		@photos = Photo.where(portfolio_id: params[:id])
 	end
@@ -75,7 +73,7 @@ class PortfoliosController < ApplicationController
 	end
 
 	def destroy
-		user = User.find(params[:user_id])
+		user = current_user
 		portfolios = Portfolio.find(params[:id])
 		portfolios.destroy
 		
@@ -93,22 +91,3 @@ class PortfoliosController < ApplicationController
 		params.require(:portfolio).fetch(:photos_attributes, {}).permit(current_photo: [:remove_photo_image, :photo_id], photo_image: [])
 	end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
