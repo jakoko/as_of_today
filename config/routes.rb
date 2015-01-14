@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   delete 'user/:user_id/portfolio/:id' => 'portfolios#destroy'
 
   # Photo related routes
-  # get 'photos' => 'photos#index', as: :photos
   get 'photo/:photo_id' => 'photos#show', as: :photo
 
   # The priority is based upon order of creation: first created -> highest priority.

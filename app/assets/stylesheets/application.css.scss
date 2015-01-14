@@ -16,6 +16,8 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+//= depend_on_asset "Sail-Regular.otf"
 @import 'font';
 
 .container-fluid {
@@ -51,7 +53,6 @@
 	text-align: center;
 	margin: 0;
 	padding: 20px 0;
-	background-image: url();
 }
 
 #show-photo-background {

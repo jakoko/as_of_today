@@ -38,6 +38,9 @@ group :development do
 	gem "better_errors"
 	gem 'quiet_assets'
 end
+
+# Show errors in asset pipeline during production
+gem 'sprockets_better_errors'
 ###################
 # RAILS GEMS
 ###################
