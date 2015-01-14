@@ -1,14 +1,29 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="row">
+	<div class="col-md-8 col-md-offset-1">
 
-<h4>Account Information</h4>
+		<div class="col-md-8">
+			<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+			<p>Email: <%= @user.email %></p>
+			<p>Location: <%= @user.state %></p>
+			<p>Website: <%= @user.personal_website %></p>
+			<p>About Me: <%= @user.about_me %></p>
+		</div>
+		
+		<div class="col-md-4">	
+			<% if !@user.profile_pic.url.nil? %>
+				<%= image_tag @user.profile_pic, class:"img-thumbnail img-responsive"%>
+			<% end %>
+		</div>
+	</div>
 
-<%= render 'shared/profile' if me? %>
+	<div class="col-md-2">
+			<%= render 'shared/profile' if me? %>
+	</div>
 
-<h3><%= link_to "View My Portfolios", user_portfolios_path(@user) %></h3>
+</div>
 
-<p>Profile Pic:</p>
-	<%= image_tag @user.profile_pic %>
-<p>Email: <%= @user.email %></p>
-<p>Location: <%= @user.state %></p>
-<p>Website: <%= @user.personal_website %></p>
-<p>About Me: <%= @user.about_me %></p>
+<div class="row">
+	<div class="col-md-8 col-md-offset-1">
+		<h3><%= link_to "View All My Portfolios", user_portfolios_path(@user) %></h3>
+	</div>
+</div>

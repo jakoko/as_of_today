@@ -1,17 +1,41 @@
-<h1>For a single portfolio and its photos</h1>
+<div class="row">
+	<div class="col-md-8 col-md-offset-1">
 
-<h2>User: <%= @user.first_name %></h2>
-<p><%= link_to "Profile", user_path(@user)  %></p>
+		<h2><%= @user.first_name %></h2>
+		<p><%= link_to "Profile", user_path(@user)  %></p>
 
-<h3>Portfolio Title: <%= @portfolio.title %></h3>
+		<h3>Portfolio Title: <%= @portfolio.title %></h3>
 
-<h4>Venue: <%= @portfolio.venue %></h4>
+		<h4>Venue: <%= @portfolio.venue %></h4>
 
-<h4>Description</h4>
-<p><%= @portfolio.description %></p>
+		<h4>Description</h4>
+		<p><%= @portfolio.description %></p>
 
-<%= render 'shared/portfolio' if me? %>
+		<%= render 'shared/edit_portfolio' if me? %>
+	</div>
+</div>
 
-<% @photos.each do |photo| %>
-	<%= image_tag photo.photo_image.url(:normal) %>
-<% end %>
+<div class="row">
+	<% @photos.in_groups_of(4) do |photo1, photo2, photo3, photo4| %>
+	<div class="row">
+    	<div class="col-md-3">
+    		<%= link_to image_tag(photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo1.id) %>
+    	</div>
+
+   		<% if photo2 %> <%# To take care of odd groups %>
+      	<div class="col-md-3"><%= link_to image_tag(photo2.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo2.id) %></div>
+    	<% end %>
+
+   		 <% if photo3 %> <%# To take care of odd groups %>
+     	 <div class="col-md-3"><%= link_to image_tag(photo3.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo3.id) %></div>
+    	<% end %>
+    	
+   	    <% if photo4 %> <%# To take care of odd groups %>
+	      <div class="col-md-3"><%= link_to image_tag(photo4.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo4.id) %></div>
+	    <% end %>
+
+	</div>
+	<% end %>
+</div>
+
+<%= render 'shared/delete_portfolio' if me? %>

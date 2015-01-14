@@ -1,52 +1,97 @@
 <h1>Edit Your Portfolio</h1>
 
-<h2>User: <%= @user.first_name %></h2>
-<%= @portfolio.title %>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
 
-<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch) do |f| %>
-	<%= hidden_field_tag :user_id, @user.id %>
-	<%= hidden_field_tag :id, @portfolio.id %>
+	<h2><%= @user.first_name %> <%= @user.last_name %></h2>
 
-	<p>	
-		<%= f.submit "Update your portfolio"%>
-	</p>
-	<p>
-		<%= f.label :title, "Title:" %>
-		<%= f.text_field :title, value: @portfolio.title %>
-	</p>
+	<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch, html: {role: "form"}) do |f| %>
+		<%= hidden_field_tag :user_id, @user.id %>
+		<%= hidden_field_tag :id, @portfolio.id %>
 
-	<p>
-		<%= f.label :description, "Description:" %>
-		<%= f.text_area	:description, value: @portfolio.description %>
-	</p>
+		<div class="form-group">
+			<%= f.label :title, "Title:" %>
+			<%= f.text_field :title, value: @portfolio.title, class: "form-control" %>
+		</div>
 
-	<p>
-		<%= f.label :venue, "Venue:" %>
-		<%= f.text_field :venue, value: @portfolio.venue %>
-	</p>
+		<div class="form-group">
+			<%= f.label :description, "Description:" %>
+			<%= f.text_area	:description, value: @portfolio.description, class: "form-control", rows: 8 %>
+		</div>
 
-<div>
+		<div class="form-group">
+			<%= f.label :venue, "Venue:" %>
+			<%= f.text_field :venue, value: @portfolio.venue, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.fields_for :photos_attributes do |p| %>
+				<%= p.label "Add new files" %>
+				<%= p.file_field :photo_image, multiple: true %>
+			<% end %>
+		</div>
+
+		<div>	
+			<%= f.submit "Update your portfolio", class: "btn btn-success center-block"%>
+		</div>
+	</div>
+<!-- closing div class row -->
+</div>
 
 	<%= f.fields_for :photos_attributes do |p| %>
-		<% @photos.each_with_index do |photo, i| %>
-			<%= image_tag photo.photo_image.url(:normal) %>
-			<%= p.label "Remove Image" %>
-			<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
-			<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo.id %>
+		
+		<% i = 0 %>
+
+		<% @photos.in_groups_of(4) do |photo1, photo2, photo3, photo4| %>
+			<div class='row' id="remove_image_portfolio_row">
+				<div class="col-md-3">
+					<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
+					<%= p.label "Remove Image" %>
+					<%= image_tag photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
+					<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo1.id %>
+				</div>
+				<% i += 1 %>
+				<!-- photo2 -->
+				<% if photo2 %>
+				<div class="col-md-3">
+					<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
+					<%= p.label "Remove Image" %>
+					<%= image_tag photo2.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
+					<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo2.id %>
+				</div>
+				<% i += 1 %>
+				<% end %>
+
+				<!-- photo3 -->
+				<% if photo3 %>
+				<div class="col-md-3">
+					<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
+					<%= p.label "Remove Image" %>
+					<%= image_tag photo3.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
+					<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo3.id %>
+				</div>
+				<% i += 1 %>
+				<% end %>
+
+				<!-- photo4 -->
+				<% if photo4 %>
+				<div class="col-md-3">
+					<%= p.check_box "current_photo[#{i}][remove_photo_image]" %>
+					<%= p.label "Remove Image" %>
+					<%= image_tag photo4.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
+					<%= p.hidden_field "current_photo[#{i}][photo_id]", value: photo4.id %>
+				</div>
+				<% i += 1 %>
+				<% end %>
+			</div>
+		<!-- end of fields_for -->
 		<% end %>
+		
+		<% i = 0 %>
+	<!-- end of form_for -->
 	<% end %>
-
-</div>
-	<p>
-		<%= f.fields_for :photos_attributes do |p| %>
-			<%= p.label "Add new files" %>
-			<%= p.file_field :photo_image, multiple: true %>
-		<% end %>
-	</p>
-
-<% end %>
-
-
+<!-- end of form -->
+<% end %> 
 
 
 

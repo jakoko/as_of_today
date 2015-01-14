@@ -1,33 +1,44 @@
-<h1>Create a portfolio</h1>
+<div class="col-md-4 col-md-offset-4">
+	<h1>Create a portfolio</h1>
+	
+	<%= form_for @portfolio, html: {role: "form"} do |f|  %>
+		<%= f.hidden_field(:user_id, value: @user.id) %>
 
-<h3>Account for <%= @user.first_name %></h3>
+		<div class="form-group">
+			<%= f.label :title, "Title*:" %>
+			<%= f.text_field :title, value: @portfolio.title, class: "form-control" %>
+		</div>
 
-<%= form_for(@portfolio) do |f|  %>
-	<%= f.hidden_field(:user_id, value: @user.id) %>
+		<div class="form-group">
+			<%= f.label :description, "Description:" %>
+			<%= f.text_area	:description, value: @portfolio.description, class: "form-control", rows: 8 %>
+		</div>
 
-	<p>
-		<%= f.label :title, "Title:" %>
-		<%= f.text_field :title, value: @portfolio.title %>
-	</p>
+		<div class="form-group">
+			<%= f.label :venue, "Venue:" %>
+			<%= f.text_field :venue, value: @portfolio.venue, class: "form-control" %>
+		</div>
 
-	<p>
-		<%= f.label :description, "Description:" %>
-		<%= f.text_area	:description, value: @portfolio.description %>
-	</p>
+		<div class="form-group">
+			<%= f.fields_for :photos_attributes do |p| %>
+				<%= p.label "Upload File (jpg, jpeg, gif, png files only)" %>
+				<%= p.file_field :photo_image, multiple: true %>
+			<% end %>
+		</div>
 
-	<p>
-		<%= f.label :venue, "Venue:" %>
-		<%= f.text_field :venue, value: @portfolio.venue %>
-	</p>
+		<%= f.submit "Create your portfolio", class: "btn btn-success center-block"%>
+	<% end %>
+</div>
 
-	<p>
-		<%= f.fields_for :photos_attributes do |p| %>
-			<%= p.label "Upload File" %>
-			<%= p.file_field :photo_image, multiple: true %>
-		<% end %>
-	</p>
 
-	<p>	
-		<%= f.submit "Create your portfolio"%>
-	</p>
-<% end %>
+
+
+
+
+
+
+
+
+
+
+

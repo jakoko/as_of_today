@@ -1,7 +1,3 @@
-<div class='page-header'>
-	<h1 id='home-h1'>As of Today</h1>
-</div>
-
 <% @photos.in_groups_of(4) do |photo1, photo2, photo3, photo4| %>
 	<div class="row">
 	    <div class="col-md-3"><%= link_to image_tag(photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo1.id) %></div>

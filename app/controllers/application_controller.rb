@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
+
+  def authorized?
+  	unless (current_user != nil) && (current_user != session[:user_id])
+  		redirect_to home_path
+  	end
+  end
+  
 end

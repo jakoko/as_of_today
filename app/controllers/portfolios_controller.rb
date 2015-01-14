@@ -51,10 +51,9 @@ class PortfoliosController < ApplicationController
 
 		# Upload image
 		unless photo_params[:photo_image].nil? 
-			photo_params[:photo_image].each { |p| 
+			photo_params[:photo_image].each do |p| 
 				@portfolio.photos.new(photo_image: p) 
-				logger.debug "here"
-			}
+			end
 		end
 
 		# Remove images

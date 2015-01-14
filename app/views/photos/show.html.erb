@@ -1,21 +1,24 @@
 <div class="row" id="show-photo-background">
 	<div class="col-md-10 col-md-offset-1">
-		<%= image_tag @photo.photo_image, class: "img-thumbnail center-block" %>
+		<%= image_tag @photo.photo_image, class: "img-thumbnail img-responsive center-block" %>
 	</div>
 </div>
 
 
 <div class="row">
-	<div class="col-md-3 col-md-offset-1">
-		<h2>Photographer: <%= @user.first_name %> <%= @user.last_name %></h2>
-		<p><%= link_to "View Profile", user_path(@user) %></p>
+	<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-6 col-md-offset-1">
+			<p><strong>Venue:</strong> <%= @portfolio.venue %></p>
+			<p><strong>Portfolio:</strong> <%= link_to @portfolio.title, portfolio_path(@user, @portfolio)%></p>
+			<h4>About this portfolio:</h4>
+			<p><%= @portfolio.description %></p>
+		</div>
 
-		<h2>Portfolio Title: <%= @portfolio.title %> </h2>
-		<%= link_to "View Portfolio", portfolio_path(@user, @portfolio) %>
-	</div>
-
-	<div class="col-md-7">
-		<p>Venue: <%= @portfolio.venue %></p>
-		<p><%= @portfolio.description %></p>
+		<div class="col-md-3 ">
+			<h4>Photographer Information: </h4>
+			<p>Taken by: <%= @user.first_name %> <%= @user.last_name %></p>
+			<p><%= link_to "View Profile", user_path(@user) %></p>
+			<p><%= link_to "View all Portfolios", user_portfolios_path(@user) %></p>
+		</div>
 	</div>
 </div>
