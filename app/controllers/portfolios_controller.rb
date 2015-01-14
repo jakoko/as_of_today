@@ -1,6 +1,6 @@
 class PortfoliosController < ApplicationController
 
-	before_action :authorized?, only: [:new, :create, :edit, :update, :destroy]
+	before_action :authorized?, only: [:new, :edit, :update, :destroy]
 
 	def index
 		@portfolios = Portfolio.all
