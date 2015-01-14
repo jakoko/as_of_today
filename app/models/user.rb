@@ -1,11 +1,8 @@
 class User
     include Mongoid::Document
     include BCrypt
-    # include Mongoid::Slug
 
     field :first_name
-    # slug :first_name, type: String
-
     field :last_name
     field :email
     field :state

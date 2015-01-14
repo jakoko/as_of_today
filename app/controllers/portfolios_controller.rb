@@ -1,9 +1,12 @@
 class PortfoliosController < ApplicationController
+
+	before_action :authorized?, only: [:new, :create, :edit, :update, :destroy]
+
 	def index
 		@portfolios = Portfolio.all
 	end
 
-	# Eventually, show thumbnail cover of each portfolio
+	# Show all of user's portfolios
 	def show_user_portfolios
 		# if logged_in? && params[:user_id] == session[:user_id]
 			@portfolios = Portfolio.where(user_id: params[:user_id])
@@ -14,7 +17,7 @@ class PortfoliosController < ApplicationController
 		# end
 	end
 
-	# Show individual pictures of within a single(chosen) portfolio
+	# Show contents of an individual portfolio
 	def show
 		@user = User.find(params[:user_id])
 		@portfolio = Portfolio.find(params[:id])

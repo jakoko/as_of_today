@@ -5,10 +5,17 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+  # Safety precaution to prevent basic hacks
   def authorized?
-  	unless (current_user != nil) && (current_user != session[:user_id])
+  	if (session[:user_id] == nil) || (params[:user_id] != session[:user_id])
   		redirect_to home_path
   	end
   end
-  
+
+  # Method is used to prevent logged-in users from
+  # creating another account
+  def users_controller_banned_actions
+  	redirect_to home_path if logged_in? # from SessionsHelper Module
+  end
+
 end

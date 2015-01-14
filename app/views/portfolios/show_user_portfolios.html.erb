@@ -11,32 +11,42 @@
 		<% @portfolios.in_groups_of(4) do |port1, port2, port3, port4| %>
 			<div class="row">
 
-			    <div class="col-md-3">
+				<% if port1 %>
+			    <div class="col-md-3 text-center">
 			    	<%= link_to port1.title, portfolio_path(@user, port1) %>
+			    	<% if !port1.photos.empty? %>
 			    	<%= image_tag(port1.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
+			    	<% end %>
 			    </div>
+			    <% end %>
 
 			    <!-- Portfolio2 -->
 		    	<% if port2 %> 
-		      	<div class="col-md-3">
+		      	<div class="col-md-3 text-center">
 		    		<%= link_to port2.title, portfolio_path(@user, port2) %>
-		    		<%= image_tag(port2.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>	      
+		    		<% if !port2.photos.empty? %>
+		    		<%= image_tag(port2.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
+		    		<% end %>
 		      	</div>
 		      	<% end %>
 
 		      	<!-- Portfolio3 -->
 		      	<% if port3 %> 
-		      	<div class="col-md-3">
+		      	<div class="col-md-3 text-center">
 		    		<%= link_to port3.title, portfolio_path(@user, port3) %>
-		    		<%= image_tag(port3.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>	      
+		    		<% if !port3.photos.empty? %>
+		    		<%= image_tag(port3.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
+		    		<% end %>      
 		      	</div>
 		      	<% end %>
 
 		      	<!-- Portfolio4 -->
 		      	<% if port4 %> 
-		      	<div class="col-md-3">
+		      	<div class="col-md-3 text-center">
 		    		<%= link_to port4.title, portfolio_path(@user, port4) %>
-		    		<%= image_tag(port4.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>	      
+		    		<% if !port4.photos.empty? %>
+		    		<%= image_tag(port4.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
+		    		<% end %>      
 		      	</div>
 		      	<% end %>
 

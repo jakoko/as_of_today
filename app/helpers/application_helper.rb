@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+	# For select options for User model's location field
 	def us_states
 	    [
 	      ['Alabama', 'AL'],

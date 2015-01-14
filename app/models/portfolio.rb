@@ -1,8 +1,6 @@
 class Portfolio
 	include Mongoid::Document
-	# include Mongoid::Slug
 	field :title
-	# slug :title, :scope => :user
 
 	field :description
 	field :venue

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	before_action :authorized?, only: [:edit, :update, :destroy]
+	before_action :users_controller_banned_actions, only: [:new, :create]
 
 	def index
 		@users = User.all
@@ -26,7 +27,6 @@ class UsersController < ApplicationController
 	      		render :new
 	    	end
 	    else
-	    	# enter password again
 	    	render :new
 	    end
 	end
