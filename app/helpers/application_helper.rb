@@ -58,4 +58,16 @@ module ApplicationHelper
 	    ]
 	end
 
+	def reset_index
+		@index = 0
+	end
+
+	def increment_index
+		@index += 1
+	end
+
+	def current_index
+		@index
+	end
+
 end

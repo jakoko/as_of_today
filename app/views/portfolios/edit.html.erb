@@ -1,25 +1,28 @@
-<div></div>v class="row">
+<%= render 'shared/user_account_navigation' if logged_in? %>
+
+<div class="row">
 	<div class="col-md-4 col-md-offset-4">
+
 	<h2 class="text-center"><u><%= @user.first_name %> <%= @user.last_name %></u></h2>
 
 	<h1 class="text-center">Edit Portfolio</h1>
 
-	<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch, html: {role: "form"}) do |f| %>
-		<%= hidden_field_tag :user_id, @user.id %> <!-- Used for authorization check -->
+	<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch) do |f| %>
 		<%= hidden_field_tag :id, @portfolio.id %>
+		<%= f.hidden_field :user_id, value: @user.id %> <!-- Used for authorization check -->
 
 		<div class="form-group">
-			<%= f.label :title, "Title:" %>
+			<%= f.label "Title:" %>
 			<%= f.text_field :title, value: @portfolio.title, class: "form-control" %>
 		</div>
 
 		<div class="form-group">
-			<%= f.label :description, "Description:" %>
+			<%= f.label "Description:" %>
 			<%= f.text_area	:description, value: @portfolio.description, class: "form-control", rows: 6 %>
 		</div>
 
 		<div class="form-group">
-			<%= f.label :venue, "Venue:" %>
+			<%= f.label "Venue:" %>
 			<%= f.text_field :venue, value: @portfolio.venue, class: "form-control" %>
 		</div>
 
@@ -30,64 +33,66 @@
 			<% end %>
 		</div>
 
-		<div>	
-			<%= f.submit "Update your portfolio", class: "btn btn-success center-block"%>
-		</div>
+		<%= f.submit "Update your portfolio", class: "btn btn-success center-block"%>
+
+	<!-- closing div col-md-4 -->
 	</div>
 <!-- closing div class row -->
 </div>
 
-		<%= f.fields_for :photos_attributes do |ph| %>
-		
-			<% i = 0 %>
+	<%= f.fields_for :photos_attributes do |ph| %>
+			<% reset_index %>
 
 			<% @photos.in_groups_of(4) do |photo1, photo2, photo3, photo4| %>
 				<div class='row' id="remove_image_portfolio_row">
+
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{i}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
-						<%= ph.hidden_field "current_photo[#{i}][photo_id]", value: photo1.id %>
+						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo1.id %>
+
+						<% increment_index %>
 					</div>
-					<% i += 1 %>
+
 					<!-- photo2 -->
 					<% if photo2 %>
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{i}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo2.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
-						<%= ph.hidden_field "current_photo[#{i}][photo_id]", value: photo2.id %>
+						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo2.id %>
 					</div>
-					<% i += 1 %>
+						<% increment_index %>
 					<% end %>
 
 					<!-- photo3 -->
 					<% if photo3 %>
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{i}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo3.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
-						<%= ph.hidden_field "current_photo[#{i}][photo_id]", value: photo3.id %>
+						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo3.id %>
 					</div>
-					<% i += 1 %>
+						<% increment_index %>
 					<% end %>
 
 					<!-- photo4 -->
 					<% if photo4 %>
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{i}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo4.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
-						<%= ph.hidden_field "current_photo[#{i}][photo_id]", value: photo4.id %>
+						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo4.id %>
 					</div>
-					<% i += 1 %>
+						<% increment_index %>
 					<% end %>
 				</div>
 			<!-- end of photos.in_groups_of -->
 			<% end %>
-		
-			<% i = 0 %>
 		<!-- end of fields_for -->
 		<% end %>
+
 <!-- end of form_for -->
 	<% end %>
+

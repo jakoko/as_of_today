@@ -1,6 +1,7 @@
 class PortfoliosController < ApplicationController
 
 	before_action :authorized?, only: [:new, :edit, :destroy]
+	before_action :authorized_portfolio_actions?, only: [:create, :update]
 
 	def index
 		@portfolios = Portfolio.all
@@ -8,9 +9,9 @@ class PortfoliosController < ApplicationController
 
 	# Show all of user's portfolios
 	def show_user_portfolios
-			me? ? @user = current_user : @user = User.find(params[:user_id])
+		me? ? @user = current_user : @user = User.find(params[:user_id])
 
-			@portfolios = Portfolio.where(user_id: params[:user_id])
+		@portfolios = Portfolio.where(user_id: params[:user_id])
 	end
 
 	# Show contents of an individual portfolio
