@@ -11,6 +11,9 @@ gem 'mongoid', '~> 4.0.0'
 # Bootstrap gem
 gem 'bootstrap-sass', '~>3.2.0'
 
+# For image layout
+gem 'masonry-rails'
+
 # For password hashing
 gem 'bcrypt', '~>3.1.9'
 
