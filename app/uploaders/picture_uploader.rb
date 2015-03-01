@@ -7,8 +7,8 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :fog
+  storage :file
+  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -45,12 +45,12 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Normal size
   version :normal, if: :is_Photo_model? do 
-    process resize_to_fit: [400, 400]
+    process resize_to_fit: [1000000, 400]
   end
 
   # Thumb size
   version :thumb, if: :is_Photo_model?, from_version: :normal do
-    process resize_to_fit: [250, 250]
+    process resize_to_fit: [1000000, 250]
   end
 
   protected
