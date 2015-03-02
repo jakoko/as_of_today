@@ -9,23 +9,33 @@
 	</div>
 </div>
 
-		<br>
+<br>
 
+<div class='col-md-10 col-md-offset-1'>
+	<h3>Portfolios</h3>
 
-<h3>Portfolios</h3>
-<div class='row'>
-		<% @portfolios.each do |portfolio| %>
-			<% if portfolio %>
-			    <div class="col-md-3 text-center">
-			    	<h4><%= link_to portfolio.title, portfolio_path(@user, portfolio) %></h4>
-			    	<% if !portfolio.photos.empty? %>
-			    	<%= image_tag(portfolio.photos.first.photo_image.url(:thumb), class: "img-thumbnail img-responsive center-block") %>
-			    	<% end %>
-			    </div>
-		    <% end %>
-		<% end %>
+	<div class='justified-container'>
+			<% @portfolios.each do |portfolio| %>
+				<% if portfolio %>
+				    <div>
+				    	<% if !portfolio.photos.empty? %>
+				    	<%= image_tag(portfolio.photos.first.photo_image.url(:thumb), class: "center-block") %>
+				    	<% end %>
+				    	<h4 class='text-center'><%= link_to portfolio.title, portfolio_path(@user, portfolio) %></h4>
+				    </div>
+			    <% end %>
+			<% end %>
+	</div>
 </div>
 
 <script>
-	
+(function() { 
+    $('.justified-container').justifiedGallery({
+        rowHeight: 250,
+        maxRowHeight: 0,
+        margins: 5,
+        captions: false,
+        lastRow : 'nojustify'
+    });
+})();
 </script>
