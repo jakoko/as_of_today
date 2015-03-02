@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require loadjs
 //= require bootstrap-sprockets
 //= require_tree .
 
-
-console.log("hey")
+load({controller: 'photos', action: 'show'}, function (controller, action) {
+  
+});

@@ -11,6 +11,9 @@ gem 'mongoid', '~> 4.0.0'
 # Bootstrap gem
 gem 'bootstrap-sass', '~>3.2.0'
 
+# Load javascript for specific pages
+gem 'loadjs'
+
 # For password hashing
 gem 'bcrypt', '~>3.1.9'
 
