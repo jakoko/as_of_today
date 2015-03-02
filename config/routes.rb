@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   # Photo related routes
   get 'photo/:photo_id' => 'photos#show', as: :photo
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

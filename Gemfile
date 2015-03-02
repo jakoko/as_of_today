@@ -30,6 +30,9 @@ gem 'sidekiq'
 # Moves files to background for processing
 gem 'carrierwave_backgrounder'
 
+# View Sidekiq interface
+gem 'sinatra', :require => nil
+
 # Secure credential configuration
 gem 'figaro'
 
