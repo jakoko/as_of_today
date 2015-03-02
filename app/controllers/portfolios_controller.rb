@@ -32,6 +32,8 @@ class PortfoliosController < ApplicationController
 
 		unless photo_params.empty? 
 			photo_params[:photo_image].each { |p| @portfolio.photos.new(photo_image: p) }
+		else
+			render :new and return
 		end
 
 		if @portfolio.save 
