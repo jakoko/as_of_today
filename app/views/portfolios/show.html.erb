@@ -17,32 +17,25 @@
 	</div>
 </div>
 
-<br>
 
-<div>
-	<% @photos.in_groups_of(4) do |photo1, photo2, photo3, photo4| %>
-	<div class="row">
 
-		<% if photo1 %>
-    	<div class="col-md-3">
-    		<%= link_to image_tag(photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo1.id) %>
-    	</div>
-    	<% end %>
-
-   		<% if photo2 %>
-      	<div class="col-md-3"><%= link_to image_tag(photo2.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo2.id) %></div>
-    	<% end %>
-
-   		 <% if photo3 %>
-     	 <div class="col-md-3"><%= link_to image_tag(photo3.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo3.id) %></div>
-    	<% end %>
-    	
-   	    <% if photo4 %>
-	      <div class="col-md-3"><%= link_to image_tag(photo4.photo_image.url(:normal), class: "img-thumbnail img-responsive center-block"), photo_path(photo4.id) %></div>
-	    <% end %>
-
-	</div>
-	<% end %>
+<div class='justified-container'>
+    <% @photos.each do |photo| %>
+            <%= link_to image_tag(photo.photo_image.url(:normal), class: "center-block"), photo_path(photo.id) %>
+    <% end %>
 </div>
 
+
 <%= render 'shared/delete_portfolio' if me? %>
+
+<script>
+    (function() { 
+        $('.justified-container').justifiedGallery({
+            rowHeight: 250,
+            maxRowHeight: 0,
+            margins: 5,
+            captions: false,
+            lastRow : 'nojustify'
+        });
+    })();
+</script>
