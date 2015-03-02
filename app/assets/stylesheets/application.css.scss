@@ -69,3 +69,20 @@
 	font-family: 'Sail-Regular';
 	font-size: 35px;
 }
+
+.justified-container {
+	footer {
+		width: 100%;
+		position: absolute; 
+		bottom: 0;
+		background-color: rgba(0,0,0,0.7);
+	}
+	footer > p {
+		color: white;
+		margin: 0.3em auto;
+		padding-left: 0.5em;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
