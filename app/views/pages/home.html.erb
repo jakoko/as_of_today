@@ -3,16 +3,3 @@
             <%= link_to image_tag(photo.photo_image.url(:normal), class: "center-block"), photo_path(photo.id) %>
     <% end %>
 </div>
-
-
-<script>
-(function() { 
-    $('.justified-container').justifiedGallery({
-        rowHeight: 250,
-        maxRowHeight: 0,
-        margins: 5,
-        captions: false,
-        lastRow : 'nojustify'
-    });
-})();
-</script>

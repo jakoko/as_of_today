@@ -19,3 +19,18 @@
 load({controller: 'photos', action: 'show'}, function (controller, action) {
   
 });
+
+load({
+    controllers: {
+        pages: ['home'],
+        portfolios: ['show', 'show_user_portfolios']
+    }
+}, function (controller, action) {
+    $('.justified-container').justifiedGallery({
+        rowHeight: 250,
+        maxRowHeight: 0,
+        margins: 5,
+        captions: false,
+        lastRow : 'nojustify'
+    });
+});
