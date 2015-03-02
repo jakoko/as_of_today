@@ -17,7 +17,18 @@
 //= require_tree .
 
 load({controller: 'photos', action: 'show'}, function (controller, action) {
-  
+    // Size image to browser on window load
+    var H = $(window).height() - 75; // Consider navbar height
+    console.log(H)
+    $('#img-photo').height(H);
+
+    // Function to resize image
+    function imgsize() {
+        var H = $(window).height() - 75; // Consider navbar height
+        $('#img-photo').height(H);
+    }
+    // Resize image when browser size changes
+    $(window).bind('resize', function() { imgsize(); });
 });
 
 load({
