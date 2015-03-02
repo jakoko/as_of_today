@@ -17,9 +17,6 @@ gem 'loadjs'
 # For password hashing
 gem 'bcrypt', '~>3.1.9'
 
-# Processing and save images in background
-gem 'sidekiq'
-
 # Using carrierwave for file uploads
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
@@ -27,7 +24,13 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 # To process images before file upload
 gem "mini_magick"
 
-# Secure Rails configuration (to git)
+# Background workers - handles image processing and saving
+gem 'sidekiq'
+
+# Moves files to background for processing
+gem 'carrierwave_backgrounder'
+
+# Secure credential configuration
 gem 'figaro'
 
 # Amazon S3 service
