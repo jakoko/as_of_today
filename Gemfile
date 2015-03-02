@@ -17,6 +17,9 @@ gem 'loadjs'
 # For password hashing
 gem 'bcrypt', '~>3.1.9'
 
+# Processing and save images in background
+gem 'sidekiq'
+
 # Using carrierwave for file uploads
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
