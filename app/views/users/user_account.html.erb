@@ -1,5 +1,7 @@
+<%= render 'shared/user_account_navigation' if logged_in? %>
+
 <div class='row'>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 text-center">
         <h3>Account Settings</h3>
             <%= link_to "Delete Account", current_user, method: :delete, data: {confirm: "Would you like to delete your account?"}, class: "btn btn-danger text-center" %>
     </div>

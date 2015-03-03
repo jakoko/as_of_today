@@ -24,6 +24,3 @@
             <%= link_to image_tag(photo.photo_image.url(:normal), class: "center-block"), photo_path(photo.id) %>
     <% end %>
 </div>
-
-
-<%= render 'shared/delete_portfolio' if me? %>
