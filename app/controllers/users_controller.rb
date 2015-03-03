@@ -45,6 +45,9 @@ class UsersController < ApplicationController
 			flash.now[:error] = "Some errors occurred"
 			render :edit
 		end
+	end
+
+	def user_account
 
 	end
 

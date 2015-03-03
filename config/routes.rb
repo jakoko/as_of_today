@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # User-related routes
   get 'users' => 'users#index', as: :users
   get 'user/new' => 'users#new', as: :new_user
+  get 'user/account' => 'users#user_account'
   get 'user/:user_id' => 'users#show', as: :user
   post 'users' => 'users#create'
   get "user/:user_id/edit" => "users#edit", as: :edit_user
