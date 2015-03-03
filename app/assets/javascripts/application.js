@@ -16,10 +16,18 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+/**********************************************************
+* LoadJS Gem to load scripts on specific controller actions
+***********************************************************/
+
+// photos#show
+// Image resizes to window height on initialization
+// Image resizes on window-size change
 load({controller: 'photos', action: 'show'}, function (controller, action) {
     // Size image to browser on window load
     var H = $(window).height() - 75; // Consider navbar height
-    console.log(H)
+
+    // on load
     $('#img-photo').height(H);
 
     // Function to resize image
@@ -31,6 +39,8 @@ load({controller: 'photos', action: 'show'}, function (controller, action) {
     $(window).bind('resize', function() { imgsize(); });
 });
 
+
+// pages#home, portfolios#show, portfolios#show_user_portfolios
 load({
     controllers: {
         pages: ['home'],

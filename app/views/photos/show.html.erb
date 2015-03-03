@@ -6,20 +6,20 @@
 </div>
 
 <!-- Display portfolio and photographer information -->
-<div class="row">
-	<div class="col-md-10 col-md-offset-1">
-		<div class="col-md-6 col-md-offset-1">
-			<p><strong>Venue:</strong> <%= @portfolio.venue %></p>
-			<p><strong>Portfolio:</strong> <%= link_to @portfolio.title, portfolio_path(@user, @portfolio)%></p>
-			<h4>About this portfolio:</h4>
-			<p><%= @portfolio.description %></p>
+
+<div class="col-md-8 col-md-offset-2">
+	<div class='row'>
+		<div class="col-md-6">
+		 	<h4><strong>Venue:</strong> <%= @portfolio.venue %></h4>
+		 	<h4><strong>Portfolio:</strong> <%= link_to @portfolio.title, portfolio_path(@user, @portfolio)%></h4>
+		 	<h4>About this portfolio:</h4>
+		 	<p><%= @portfolio.description %></p>
 		</div>
 
-		<div class="col-md-3 ">
-			<h4>Photographer Information: </h4>
-			<p>Taken by: <%= @user.first_name %> <%= @user.last_name %></p>
-			<p><%= link_to "View Profile", user_path(@user) %></p>
-			<p><%= link_to "View all Portfolios", user_portfolios_path(@user) %></p>
+		<div class="col-md-6" id="user_info">
+			<%= image_tag @user.profile_pic, class: "img-circle", id: "profile_pic_show" %>	
+			<h3><%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %></h3>
+			<hr>
 		</div>
 	</div>
 </div>

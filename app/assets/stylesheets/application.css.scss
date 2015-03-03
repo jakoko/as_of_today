@@ -17,10 +17,26 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-
-//= depend_on_asset "Sail-Regular.otf"
 @import 'font';
 
+
+$font-base:		"CabinRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-heading:	"SailRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/******************************
+* Overide Bootstrap Font Family
+*******************************/
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-base;
+}
+p, div {
+    font-family: $font-base;
+}
+
+
+/******************************
+* Additional Customization
+*******************************/
 .container-fluid {
 	padding-bottom: 1%;
 }
@@ -49,7 +65,7 @@
 }
 
 #page-header-h1 {
-	font-family: 'Sail-Regular';
+	font-family: $font-heading;
 	font-size: 55px;
 	text-align: center;
 	margin: 0;
@@ -66,10 +82,25 @@
 }
 
 #home-button {
-	font-family: 'Sail-Regular';
+	font-family: $font-heading;
 	font-size: 35px;
 }
 
+#user_info {
+	h3 {
+		display: inline-block;
+		margin-left: 1em;
+	}
+}
+
+#profile_pic_show {
+	height: 100px;
+	width: 100px;
+}
+
+/******************************
+* Justified Gallery
+*******************************/
 .justified-container {
 	footer {
 		width: 100%;
