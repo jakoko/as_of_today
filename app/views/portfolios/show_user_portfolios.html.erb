@@ -13,11 +13,10 @@
 
 <div class='col-md-10 col-md-offset-1'>
 	<h3>Portfolios</h3>
-
 	<div class='justified-container'>
 			<% @portfolios.each do |portfolio| %>
 			    <div>
-			    	<%= link_to image_tag(portfolio.photos.first.photo_image.url(:thumb), alt: portfolio.title), portfolio_path(@user, portfolio) %>
+			    	<%= link_to image_tag(portfolio_cover_image(portfolio), alt: portfolio.title), portfolio_path(@user, portfolio) %>
                     <footer><p><%= portfolio.title %></p></footer>
 			    </div>
 			<% end %>
