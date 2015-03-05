@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
   include PortfoliosHelper
+  include UsersHelper
 
   # Safety precaution to prevent basic hacks
   def authorized?
