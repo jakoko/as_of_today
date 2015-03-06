@@ -66,8 +66,20 @@ load({
 *****************/
 load({controller: 'portfolios', action: 'edit'}, function (controller, action) {
     $('#remove_image_portfolio_row img').click(function() {
-console.log($(this))
-        // $(this).prev().prev().click();
         $(this).siblings('#remove_image').click();
+    });
+});
+
+/****************
+* users#edit
+*****************/
+load({controller: 'users', action: 'edit'}, function (controller, action) {
+    var intervalFunc = function () {
+        $('#file-name').html($('#uploadFile').val());
+    };
+    $('#browse-click').on('click', function () { 
+        $('#uploadFile').click();
+        setInterval(intervalFunc, 1);
+        return false;
     });
 });

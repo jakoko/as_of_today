@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  # Using Page Controller to view
-  root 'pages#home', as: :home
+  root 'pages#landing', as: :landing
+
+  get '/home' => "pages#home", as: :home
 
   # Logging in and out a user
   get 'login' => 'sessions#new'

@@ -3,23 +3,22 @@
 
 	<% if logged_in? %>
         <%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-primary nav-button-right' %>
-<!-- Test here -->
+
         <div class="dropdown nav-button-right">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-            More
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_portfolios_path(current_user) %>>My Portfolios</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= edit_portfolios_page_path(current_user) %>>Edit Portfolios</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= new_portfolio_path(current_user) %>>New Portfolio</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_path(current_user) %>>My Profile</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= edit_user_path(current_user) %>>Edit Profile</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_account_path %>>Account</a></li>
-          </ul>
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                More
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_portfolios_path(current_user) %>>My Portfolios</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= edit_portfolios_page_path(current_user) %>>Edit Portfolios</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= new_portfolio_path(current_user) %>>New Portfolio</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_path(current_user) %>>My Profile</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= edit_user_path(current_user) %>>Edit Profile</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_account_path %>>Account</a></li>
+            </ul>
         </div>
-<!-- End -->
  			
  	<% else %>
 		<span class= "nav-button-right">
@@ -29,6 +28,5 @@
  		<span class= "nav-button-right">
 			<%= link_to "Create Account", new_user_path, class: 'btn btn-primary'  %>
 		</span>
-
 	<% end %>
 </nav>

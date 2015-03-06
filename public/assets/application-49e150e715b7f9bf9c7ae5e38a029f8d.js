@@ -12938,10 +12938,20 @@ function load(options, fn) {
 
 
 
+/**********************************************************
+* LoadJS Gem is used to load scripts on specific controller actions
+***********************************************************/
+
+/****************
+* photos#show
+*****************/
+// Image resizes to window height on initialization
+// Image resizes on window-size change
 load({controller: 'photos', action: 'show'}, function (controller, action) {
     // Size image to browser on window load
     var H = $(window).height() - 75; // Consider navbar height
-    console.log(H)
+
+    // on load
     $('#img-photo').height(H);
 
     // Function to resize image
@@ -12953,10 +12963,15 @@ load({controller: 'photos', action: 'show'}, function (controller, action) {
     $(window).bind('resize', function() { imgsize(); });
 });
 
+/****************************************************************************
+* pages#home
+* portfolios#show, portfolios#show_user_portfolios, portfolios#edit_portfolios
+*****************************************************************************/
+// Activate justified gallery
 load({
     controllers: {
         pages: ['home'],
-        portfolios: ['show', 'show_user_portfolios']
+        portfolios: ['show', 'show_user_portfolios', 'edit_portfolios']
     }
 }, function (controller, action) {
     $('.justified-container').justifiedGallery({
@@ -12965,5 +12980,28 @@ load({
         margins: 5,
         captions: false,
         lastRow : 'nojustify'
+    });
+});
+
+/****************
+* portfolios#edit
+*****************/
+load({controller: 'portfolios', action: 'edit'}, function (controller, action) {
+    $('#remove_image_portfolio_row img').click(function() {
+        $(this).siblings('#remove_image').click();
+    });
+});
+
+/****************
+* users#edit
+*****************/
+load({controller: 'users', action: 'edit'}, function (controller, action) {
+    var intervalFunc = function () {
+        $('#file-name').html($('#uploadFile').val());
+    };
+    $('#browse-click').on('click', function () { 
+        $('#uploadFile').click();
+        setInterval(intervalFunc, 1);
+        return false;
     });
 });

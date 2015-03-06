@@ -1,0 +1,28 @@
+<div id="tinted-layer"></div><div>
+
+<%= render "shared/navigation" %>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center" id="landing-cta">
+        <h1>As of Today</h1>
+        <h4 class='text-center'>Discover the photographer to capture<br>the precious moments of your wedding day</h4>
+        <%= link_to "Discover", home_path, class: "btn btn-primary" %>
+    </div>
+</div>
+
+<script>
+$(function() {
+
+
+    var H = $(window).height();
+    $('#landing-page-main-container').height(H);
+
+    function imgsize() {
+        var H = $(window).height(); // Consider navbar height
+        $('#landing-page-main-container').height(H);
+    }
+    // Resize image when browser size changes
+    $(window).bind('resize', function() { imgsize(); });
+
+});
+</script>

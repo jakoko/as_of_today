@@ -1,20 +1,21 @@
 <div class="col-md-6 col-md-offset-3">
-	<h1 class="text-center">Edit Profile</h1>
+	<h1 class="text-center">Your Profile</h1>
 
 	<%= form_for(@user, html: {role: "form"}) do |f| %>
-		<h4 class="text-center">Profile Pic:</h4>
 
 		<%= image_tag @user.profile_pic, class: "img-thumbnail img-responsive center-block" %>
 
-		<h5 class="text-center">
-			<%= f.label "Remove current picture" %>
-			<%= f.check_box :remove_profile_pic %>
-		</h5>
-
 		<div class="text-center">
 			<%= f.label "Upload a new picture" %>
-			<%= f.file_field :profile_pic, class:"center-block" %>
+			<p id="file-name"></p>
+			<p class="btn btn-default" id="browse-click">Browse For Photo</p>
+			<%= f.file_field :profile_pic, style:"display: none", id:"uploadFile"%>
 		</div>
+
+		<h5 class="text-center">
+			<%= f.check_box :remove_profile_pic %>
+			<%= f.label "Remove current picture" %>
+		</h5>
 
 		<br>
 
@@ -50,23 +51,3 @@
 
 	<% end %>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
