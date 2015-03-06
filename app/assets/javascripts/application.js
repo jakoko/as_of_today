@@ -20,7 +20,9 @@
 * LoadJS Gem is used to load scripts on specific controller actions
 ***********************************************************/
 
-/* photos#show */
+/****************
+* photos#show
+*****************/
 // Image resizes to window height on initialization
 // Image resizes on window-size change
 load({controller: 'photos', action: 'show'}, function (controller, action) {
@@ -39,8 +41,11 @@ load({controller: 'photos', action: 'show'}, function (controller, action) {
     $(window).bind('resize', function() { imgsize(); });
 });
 
-
-/* pages#home, portfolios#show, portfolios#show_user_portfolios */
+/****************************************************************************
+* pages#home
+* portfolios#show, portfolios#show_user_portfolios, portfolios#edit_portfolios
+*****************************************************************************/
+// Activate justified gallery
 load({
     controllers: {
         pages: ['home'],
@@ -53,5 +58,16 @@ load({
         margins: 5,
         captions: false,
         lastRow : 'nojustify'
+    });
+});
+
+/****************
+* portfolios#edit
+*****************/
+load({controller: 'portfolios', action: 'edit'}, function (controller, action) {
+    $('#remove_image_portfolio_row img').click(function() {
+console.log($(this))
+        // $(this).prev().prev().click();
+        $(this).siblings('#remove_image').click();
     });
 });

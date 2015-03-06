@@ -1,8 +1,13 @@
-<div class='justified-container'>
-        <% @portfolios.each do |portfolio| %>
-            <div>
-                <%= link_to image_tag(portfolio_cover_image(portfolio), alt: portfolio.title), edit_portfolio_path(current_user, portfolio) %>
-                <footer><p><%= portfolio.title %></p></footer>
-            </div>
-        <% end %>
-</div>
+<div class='col-md-10 col-md-offset-1'>
+    <div class="row">
+        <h1 class="text-center">Choose A Portfolio To Edit</h1>
+    </div>
+    <div class='justified-container'>
+            <% @portfolios.each do |portfolio| %>
+                <div>
+                    <%= link_to image_tag(portfolio_cover_image(portfolio), alt: portfolio.title), edit_portfolio_path(current_user, portfolio) %>
+                    <footer><p><%= portfolio.title %></p></footer>
+                </div>
+            <% end %>
+    </div>
+<div>

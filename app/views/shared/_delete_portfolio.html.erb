@@ -1,6 +1,27 @@
 <div class='row'>
 	<div class="text-center">
-		<h4><%= link_to "Delete Portfolio", portfolio_path, 
-			method: :delete, data: { confirm: "Would you like to delete your portfolio?"}, class: "btn btn-danger"  %></h4>
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePortfolioModal">
+            Delete Portfolio
+        </button>
 	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deletePortfolioModal" tabindex="-1" role="dialog" aria-labelledby="deletePortfolioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>Your portfolio will be deleted forever. Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <%= link_to "Delete", portfolio_path, method: :delete, class: "btn btn-danger"  %>
+      </div>
+    </div>
+  </div>
 </div>

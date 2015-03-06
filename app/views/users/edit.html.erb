@@ -33,9 +33,8 @@
 	  	</div>
 
 	  	<div class="form-group">
-	  	<%= f.label :location %>
-		<%= f.select :state, options_for_select((us_states), @user.state),
-							 {:include_blank => true, :prompt => "Select State"}%>
+		  	<%= f.label :location %>
+			<%= f.select :state, options_for_select((us_states), @user.state), {:include_blank => true, :prompt => "Select State"}%>
 		</div>
 
 	  	<div class="form-group">

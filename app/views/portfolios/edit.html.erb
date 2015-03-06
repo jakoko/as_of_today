@@ -1,5 +1,9 @@
 <div class="row">
-	<div class="col-md-4 col-md-offset-4">
+	<div class="col-md-2">
+		<p><small><%= link_to "Back to Portfolios", edit_portfolios_page_path(current_user) %><small></p>
+	</div>
+
+	<div class="col-md-4 col-md-offset-2">
 
 	<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch) do |f| %>
 		<%= hidden_field_tag :id, @portfolio.id %>
@@ -41,7 +45,7 @@
 				<div class='row' id="remove_image_portfolio_row">
 
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]", id: "remove_image" %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo1.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
 						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo1.id %>
@@ -52,7 +56,7 @@
 					<!-- photo2 -->
 					<% if photo2 %>
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]", id: "remove_image"  %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo2.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
 						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo2.id %>
@@ -63,7 +67,7 @@
 					<!-- photo3 -->
 					<% if photo3 %>
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]", id: "remove_image"  %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo3.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
 						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo3.id %>
@@ -74,7 +78,7 @@
 					<!-- photo4 -->
 					<% if photo4 %>
 					<div class="col-md-3">
-						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]" %>
+						<%= ph.check_box "current_photo[#{current_index}][remove_photo_image]", id: "remove_image"  %>
 						<%= ph.label "Remove Image" %>
 						<%= image_tag photo4.photo_image.url(:normal), class: "img-thumbnail img-responsive" %>
 						<%= ph.hidden_field "current_photo[#{current_index}][photo_id]", value: photo4.id %>
@@ -86,7 +90,6 @@
 			<% end %>
 		<!-- end of fields_for -->
 		<% end %>
-
 <!-- end of form_for -->
 	<% end %>
 
