@@ -17,10 +17,10 @@
 //= require_tree .
 
 /**********************************************************
-* LoadJS Gem to load scripts on specific controller actions
+* LoadJS Gem is used to load scripts on specific controller actions
 ***********************************************************/
 
-// photos#show
+/* photos#show */
 // Image resizes to window height on initialization
 // Image resizes on window-size change
 load({controller: 'photos', action: 'show'}, function (controller, action) {
@@ -40,7 +40,7 @@ load({controller: 'photos', action: 'show'}, function (controller, action) {
 });
 
 
-// pages#home, portfolios#show, portfolios#show_user_portfolios
+/* pages#home, portfolios#show, portfolios#show_user_portfolios */
 load({
     controllers: {
         pages: ['home'],

@@ -2,7 +2,22 @@
 	<%= link_to	"As of Today", home_path, class: "btn btn-link", id: "home-button" %>
 
 	<% if logged_in? %>
-
+<!-- Test here -->
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    More
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_portfolios_path(current_user) %>>My Portfolios</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= new_portfolio_path(current_user) %>>New Portfolio</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_path(current_user) %>>My Profile</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= edit_user_path(current_user) %>>Edit Profile</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= user_account_path %>>Account</a></li>
+  </ul>
+</div>
+<!-- End -->
  			<%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-primary nav-button-right' %>
  		
       <%= link_to "My Portfolios", user_portfolios_path(current_user), class: "btn btn-link pull-right nav-button-right" %>

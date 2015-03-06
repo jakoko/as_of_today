@@ -2,10 +2,13 @@
 
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<h2>
-			<%= image_tag(user_profile_pic(@user), class: "img-thumbnail", id:"user_portfolio_profile_pic") %> <%= @user.first_name %> <%= @user.last_name %>
-			<small class="h4"><%= link_to "Profile", user_path(@user) %></small>
-		</h2>
+		<%= image_tag(user_profile_pic(@user), class: "img-thumbnail img-responsive", id:"user_portfolio_profile_pic") %> 
+		<div id="user_portfolios">
+			<h2>
+				<%= @user.first_name %> <%= @user.last_name %>
+			</h2>
+			<p><%= link_to "Profile", user_path(@user) %></p>
+		</div>
 	</div>
 </div>
 

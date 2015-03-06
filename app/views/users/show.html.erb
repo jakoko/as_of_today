@@ -2,7 +2,11 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-
+		<div class="col-md-4">	
+			<% if !@user.profile_pic.url.nil? %>
+				<%= image_tag @user.profile_pic, class:"img-thumbnail img-responsive"%>
+			<% end %>
+		</div>
 		<div class="col-md-8">
 			<h2><u><%= @user.first_name %> <%= @user.last_name %></u></h2>
 			<h4><%= link_to "View Portfolios", user_portfolios_path(@user) %></h4>
@@ -10,12 +14,6 @@
 			<p>Location: <%= @user.state %></p>
 			<p>Website: <%= @user.personal_website %></p>
 			<p>About Me: <%= @user.about_me %></p>
-		</div>
-		
-		<div class="col-md-4">	
-			<% if !@user.profile_pic.url.nil? %>
-				<%= image_tag @user.profile_pic, class:"img-thumbnail img-responsive"%>
-			<% end %>
 		</div>
 	</div>
 </div>
