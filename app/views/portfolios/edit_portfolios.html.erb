@@ -1,0 +1,8 @@
+<div class='justified-container'>
+        <% @portfolios.each do |portfolio| %>
+            <div>
+                <%= link_to image_tag(portfolio_cover_image(portfolio), alt: portfolio.title), edit_portfolio_path(current_user, portfolio) %>
+                <footer><p><%= portfolio.title %></p></footer>
+            </div>
+        <% end %>
+</div>

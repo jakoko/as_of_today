@@ -1,22 +1,20 @@
-<%= render 'shared/user_account_navigation' if logged_in? %>
-
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 
-		<h2><u><%= @user.first_name %> <%= @user.last_name %></u></h2>
-		<p><%= link_to "Profile", user_path(@user) %>  <%= link_to "View Portfolios", user_portfolios_path(@user) %></p>
+        <%= render 'shared/user_profile_header' %>
 
-		<h3>Portfolio Title: <%= @portfolio.title %></h3>
-
-		<h4>Venue: <%= @portfolio.venue %></h4>
-
-		<h4>Description:</h4>
-		<p><%= @portfolio.description %></p>
-
-		<%= render 'shared/edit_portfolio' if me? %>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#portfolioInfo" aria-expanded="false" aria-controls="portfolioInfo">
+            About the portfolio
+        </button>
+        <div class="collapse" id="portfolioInfo">
+          <div class="well">
+              <h4>Title: <%= @portfolio.title %></h4>
+              <h4>Venue: <%= @portfolio.venue %></h4>
+              <p><%= @portfolio.description %></p>
+          </div>
+        </div>
 	</div>
 </div>
-
 
 
 <div class='justified-container'>

@@ -1,11 +1,5 @@
-<%= render 'shared/user_account_navigation' if logged_in? %>
-
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-
-	<h2 class="text-center"><u><%= @user.first_name %> <%= @user.last_name %></u></h2>
-
-	<h1 class="text-center">Edit Portfolio</h1>
 
 	<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch) do |f| %>
 		<%= hidden_field_tag :id, @portfolio.id %>
@@ -96,3 +90,5 @@
 <!-- end of form_for -->
 	<% end %>
 
+
+<%= render "shared/delete_portfolio" %>

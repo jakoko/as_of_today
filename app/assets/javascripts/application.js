@@ -44,7 +44,7 @@ load({controller: 'photos', action: 'show'}, function (controller, action) {
 load({
     controllers: {
         pages: ['home'],
-        portfolios: ['show', 'show_user_portfolios']
+        portfolios: ['show', 'show_user_portfolios', 'edit_portfolios']
     }
 }, function (controller, action) {
     $('.justified-container').justifiedGallery({

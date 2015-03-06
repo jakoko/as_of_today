@@ -1,18 +1,8 @@
-<%= render 'shared/user_account_navigation' if logged_in? %>
-
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<%= image_tag(user_profile_pic(@user), class: "img-thumbnail img-responsive", id:"user_portfolio_profile_pic") %> 
-		<div id="user_portfolios">
-			<h2>
-				<%= @user.first_name %> <%= @user.last_name %>
-			</h2>
-			<p><%= link_to "Profile", user_path(@user) %></p>
-		</div>
+		<%= render "shared/user_profile_header" %>
 	</div>
 </div>
-
-<br>
 
 <div class='col-md-10 col-md-offset-1'>
 	<h3>Portfolios</h3>

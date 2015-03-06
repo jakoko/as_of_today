@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # Portfolio-related routes
   get 'portfolios' => 'portfolios#index', as: :portfolios
+  get 'user/:user_id/edit_portfolios' => 'portfolios#edit_portfolios', as: :edit_portfolios_page
   get 'user/:user_id/portfolios' => 'portfolios#show_user_portfolios', as: :user_portfolios
   get 'user/:user_id/portfolio/new' => 'portfolios#new', as: :new_portfolio
   post 'portfolios' => 'portfolios#create'

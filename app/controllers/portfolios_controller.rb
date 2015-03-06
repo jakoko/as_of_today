@@ -43,6 +43,10 @@ class PortfoliosController < ApplicationController
 		end
 	end
 
+	def edit_portfolios
+		@portfolios = Portfolio.where(user_id: current_user)
+	end
+
 	def edit
 		me? ? @user = current_user : @user = User.find(params[:user_id])
 
@@ -69,7 +73,7 @@ class PortfoliosController < ApplicationController
 
 		# Update
 		if @portfolio.update_attributes(portfolio_params)
-			redirect_to portfolio_path(@portfolio.user_id, @portfolio)
+			redirect_to edit_portfolios_page_path(@portfolio.user_id, @portfolio)
 		else
 			render :edit
 		end

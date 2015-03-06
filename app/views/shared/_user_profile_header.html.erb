@@ -1,0 +1,10 @@
+<div>
+    <%= link_to (image_tag(user_profile_pic(@user), class: "img-thumbnail img-responsive", id:"user_portfolio_profile_pic")), user_portfolios_path(@user) %> 
+    <div id="user_portfolios">
+        <h2>
+            <%= @user.first_name %> <%= @user.last_name %>
+        </h2>
+        <p><%= link_to "View Portfolios", user_portfolios_path(@user) %></p>
+        <p><%= link_to "Profile", user_path(@user) %></p>
+    </div>
+</div>
