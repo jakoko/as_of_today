@@ -7,7 +7,7 @@
 
 	<%= form_for(@portfolio, :url => {:action=>"update", :controller=>"portfolios"}, :method => :patch) do |f| %>
 		<%= hidden_field_tag :id, @portfolio.id %>
-		<%= f.hidden_field :user_id, value: current_user.id %> <!-- Used for authorization check -->
+		<%= f.hidden_field :user_id, value: current_user.id %> 
 
 		<div class="form-group">
 			<%= f.label "Title*:" %>

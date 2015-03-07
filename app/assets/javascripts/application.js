@@ -26,13 +26,10 @@
 // Image resizes to window height on initialization
 // Image resizes on window-size change
 load({controller: 'photos', action: 'show'}, function (controller, action) {
-    // Size image to browser on window load
-    var H = $(window).height() - 75; // Consider navbar height
 
-    // on load
+    var H = $(window).height() - 75; // Consider navbar height
     $('#img-photo').height(H);
 
-    // Function to resize image
     function imgsize() {
         var H = $(window).height() - 75; // Consider navbar height
         $('#img-photo').height(H);
@@ -64,6 +61,7 @@ load({
 /****************
 * portfolios#edit
 *****************/
+// Allow user to click on image to click checkbox
 load({controller: 'portfolios', action: 'edit'}, function (controller, action) {
     $('#remove_image_portfolio_row img').click(function() {
         $(this).siblings('#remove_image').click();
@@ -73,13 +71,37 @@ load({controller: 'portfolios', action: 'edit'}, function (controller, action) {
 /****************
 * users#edit
 *****************/
+// Due to the limitations on styling the file input tag,
+// jquery is used with a combination of some CSS to emulate
+// the file input tag
 load({controller: 'users', action: 'edit'}, function (controller, action) {
-    var intervalFunc = function () {
-        $('#file-name').html($('#uploadFile').val());
-    };
+    // Button click activates file input button, which is hidden
     $('#browse-click').on('click', function () { 
         $('#uploadFile').click();
-        setInterval(intervalFunc, 1);
-        return false;
     });
+
+    // Shows file name to user
+    // Disables or enables checkbox
+    $('#uploadFile').change(function() {
+        var fileName = $('#uploadFile').val().replace("C:\\fakepath\\", "");
+        $('#file-name').text(fileName);
+
+        var fileNameField = $('#file-name').text();
+        if(fileNameField !== null && fileNameField.length !== 0) {
+            $('#remove-checkbox').attr('disabled', true)
+        }
+        else if(fileNameField === null || fileNameField.length === 0) {
+            $('#remove-checkbox').attr('disabled', false)
+        }
+    })
+
+    // Disable or enable 'browse for file' button when checkbox is checked/unchecked
+    $('#remove-checkbox').change(function() {
+        if($('#remove-checkbox').is(':checked') === true) {
+            $('#browse-click').attr('disabled', true)
+        }
+        else {
+            $('#browse-click').attr('disabled', false)
+        }
+    })
 });

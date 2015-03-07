@@ -1,27 +1,29 @@
 <div class='row'>
-	<div class="text-center">
-		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePortfolioModal">
-            Delete Portfolio
-        </button>
-	</div>
+    <div class="col-md-8 col-md-offset-2 text-center">
+    	<div class="text-center">
+        	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePortfolioModal">
+                Delete Portfolio
+            </button>
+        </div>
+    <div>
 </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="deletePortfolioModal" tabindex="-1" role="dialog" aria-labelledby="deletePortfolioLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delete Portfolio</h4>
-      </div>
-      <div class="modal-body">
-        <h4>Your portfolio will be deleted forever.  Are you sure?</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%= link_to "Delete", portfolio_path, method: :delete, class: "btn btn-danger"  %>
-      </div>
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">Delete Portfolio</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Your portfolio will be deleted forever.  Are you sure?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <%= link_to "Delete", portfolio_path, method: :delete, class: "btn btn-danger"  %>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
