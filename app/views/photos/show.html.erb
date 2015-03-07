@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="col-md-6" id="user_info">
-			<%= image_tag @user.profile_pic, class: "img-circle", id: "profile_pic_show" %>	
+			<%= image_tag user_profile_pic(@user), class: "img-circle", id: "profile_pic_show" %>	
 			<h3><%= link_to "#{@user.first_name} #{@user.last_name}", user_portfolios_path(@user) %></h3>
 			<hr>
 		</div>
