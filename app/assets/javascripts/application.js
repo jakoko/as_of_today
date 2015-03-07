@@ -49,12 +49,19 @@ load({
         portfolios: ['show', 'show_user_portfolios', 'edit_portfolios']
     }
 }, function (controller, action) {
+    // Randomize only on pages#home
+    var randomize = function() {
+        if(controller === 'pages' && action === 'home') { return true }
+        else { return false }
+    }
+
     $('.justified-container').justifiedGallery({
         rowHeight: 250,
         maxRowHeight: 0,
         margins: 5,
         captions: false,
-        lastRow : 'nojustify'
+        lastRow : 'nojustify',
+        randomize: randomize()
     });
 });
 
