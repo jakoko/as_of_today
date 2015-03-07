@@ -1,0 +1,31 @@
+<!-- Flash Messages -->
+<% flash.each do |type, msg| %>
+    <% if type=='notice' %>
+        <%= content_tag :div, msg, class:"alert alert-success", role:"alert"  %>
+    <% elsif type=='error' %>
+        <%= content_tag :div, msg, class:"alert alert-warning", role:"alert" %>
+    <% end %>
+<% end %>
+
+<!-- Error message from model validations -->
+<!-- User Model -->
+<% unless @user.nil? || @user.errors.empty?%>
+    <div class="alert alert-warning", role="alert">
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %> 
+                <li><%= msg %></li>
+            <% end %> 
+        </ul>
+    </div>
+<% end %>
+
+<!-- Portfolio Model -->
+ <% unless @portfolio.nil? || @portfolio.errors.empty?%>
+    <div class="alert alert-warning", role="alert">
+        <ul>
+            <% @portfolio.errors.full_messages.each do |msg| %> 
+                <li><%= msg %></li>
+            <% end %> 
+        </ul>
+    </div>
+<% end %>

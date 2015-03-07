@@ -33,6 +33,7 @@ class PortfoliosController < ApplicationController
 		unless photo_params.empty? 
 			photo_params[:photo_image].each { |p| @portfolio.photos.new(photo_image: p) }
 		else
+			flash.now[:error] = "Please include at least one photo"
 			render :new and return
 		end
 
