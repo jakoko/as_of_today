@@ -21,7 +21,7 @@
 
 		<div class="form-group">
 			<%= f.fields_for :photos_attributes do |p| %>
-				<%= p.label "Upload File (jpg, jpeg, gif, png files only)" %>
+				<%= p.label "Upload Photos (jpg, jpeg, gif, png files only)" %>
 				<%= p.file_field :photo_image, multiple: true %>
 			<% end %>
 		</div>
