@@ -56,12 +56,12 @@ class PortfoliosController < ApplicationController
 	end
 
 	def update
-		@portfolio = Portfolio.find(params[:id])
+		portfolio = Portfolio.find(params[:id])
 
 		# Upload image
 		unless photo_params[:photo_image].nil? 
 			photo_params[:photo_image].each do |p| 
-				@portfolio.photos.new(photo_image: p) 
+				portfolio.photos.new(photo_image: p) 
 			end
 		end
 
@@ -73,10 +73,11 @@ class PortfoliosController < ApplicationController
 		end
 
 		# Update
-		if @portfolio.update_attributes(portfolio_params)
-			redirect_to edit_portfolios_page_path(@portfolio.user_id, @portfolio)
+		if portfolio.update_attributes(portfolio_params)
+			redirect_to edit_portfolios_page_path(portfolio.user_id, portfolio)
 		else
-			render :edit
+			flash[:error] = "There was an error"
+			redirect_to edit_portfolio_path(portfolio.user_id, portfolio)
 		end
 	end
 

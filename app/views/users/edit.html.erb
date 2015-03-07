@@ -1,9 +1,9 @@
 <div class="col-md-6 col-md-offset-3">
 	<h1 class="text-center">Your Profile</h1>
 
-	<%= form_for(@user, html: {role: "form"}) do |f| %>
+	<%= form_for(current_user, html: {role: "form"}) do |f| %>
 
-		<%= image_tag @user.profile_pic, class: "img-thumbnail img-responsive center-block" %>
+		<%= image_tag user_profile_pic(current_user), class: "img-thumbnail img-responsive center-block" %>
 
 		<div class="text-center">
 			<%= f.label "Upload a new picture" %>
@@ -21,30 +21,30 @@
 
 		<div class="form-group">
 			<%= f.label :first_name %>
-		  	<%= f.text_field :first_name, :value => @user.first_name, class: "form-control" %>
+		  	<%= f.text_field :first_name, :value => current_user.first_name, class: "form-control" %>
 	  	</div>
 
 		<div class="form-group">
 			<%= f.label :last_name %>
-		  	<%= f.text_field :last_name, :value => @user.last_name, class: "form-control" %>
+		  	<%= f.text_field :last_name, :value => current_user.last_name, class: "form-control" %>
 	  	</div>
 	  	<div class="form-group">
 		  	<%= f.label :email %>
-		  	<%= f.text_field :email, :value => @user.email, class: "form-control" %>
+		  	<%= f.text_field :email, :value => current_user.email, class: "form-control" %>
 	  	</div>
 
 	  	<div class="form-group">
 		  	<%= f.label :location %>
-			<%= f.select :state, options_for_select((us_states), @user.state), {:include_blank => true, :prompt => "Select State"}%>
+			<%= f.select :state, options_for_select((us_states), current_user.state), {:include_blank => true, :prompt => "Select State"}%>
 		</div>
 
 	  	<div class="form-group">
 		  	<%= f.label :personal_website %>
-		  	<%= f.text_field :personal_website, :value => @user.personal_website, class: "form-control" %>
+		  	<%= f.text_field :personal_website, :value => current_user.personal_website, class: "form-control" %>
 	  	</div>
 	  	<div class="form-group">
 		  	<%= f.label :about_me %>
-		  	<%= f.text_area :about_me, :value => @user.about_me, class: "form-control" %>
+		  	<%= f.text_area :about_me, :value => current_user.about_me, class: "form-control" %>
 	  	</div>
 
 	  	<%= f.submit "Update", class: "btn btn-success center-block" %>

@@ -10,7 +10,7 @@
 		<%= f.hidden_field :user_id, value: current_user.id %> <!-- Used for authorization check -->
 
 		<div class="form-group">
-			<%= f.label "Title:" %>
+			<%= f.label "Title*:" %>
 			<%= f.text_field :title, value: @portfolio.title, class: "form-control" %>
 		</div>
 

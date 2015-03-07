@@ -37,8 +37,8 @@ class UsersController < ApplicationController
 		if @user.update_attributes(user_params)
 			redirect_to user_path(@user), :notice => "Account Updated"
 		else
-			flash.now[:error] = "Some errors occurred"
-			render :edit
+			flash[:error] = "Some errors occurred"
+			redirect_to edit_user_path(@user)
 		end
 	end
 
