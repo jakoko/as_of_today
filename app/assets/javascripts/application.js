@@ -25,18 +25,18 @@
 *****************/
 // Image resizes to window height on initialization
 // Image resizes on window-size change
-load({controller: 'photos', action: 'show'}, function (controller, action) {
+// load({controller: 'photos', action: 'show'}, function (controller, action) {
 
-    var H = $(window).height() - 75; // Consider navbar height
-    $('#img-photo').height(H);
+//     var H = $(window).height() - 75; // Consider navbar height
+//     $('#img-photo').height(H);
 
-    function imgsize() {
-        var H = $(window).height() - 75; // Consider navbar height
-        $('#img-photo').height(H);
-    }
-    // Resize image when browser size changes
-    $(window).bind('resize', function() { imgsize(); });
-});
+//     function imgsize() {
+//         var H = $(window).height() - 75; // Consider navbar height
+//         $('#img-photo').height(H);
+//     }
+//     // Resize image when browser size changes
+//     $(window).bind('resize', function() { imgsize(); });
+// });
 
 /****************************************************************************
 * pages#home
